@@ -1,0 +1,108 @@
+Simple mission controller
+Base enemy struck and behaviour (bastion)
+Base player "hero" struck and behaviour (not specific)
+Basic gun
+Enemy die
+some effects
+angela fps
+mission start - spawn player
+enemy spawner
+some effects
+trigger syst
+mission won
+infinity level - waves of enemy's
+waves mission syst + missions
+capture items syst
+capture payload syst
+simple boss enemy
+bossFight syst
+example of all missions
+heros upgrade get ability syst
+impl heroes
+impl enemy's
+impl some ability's to heroes
+create "free" missions 
+create story missions by comics 
+main menu
+network co-op
+effects and polishing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+want to work in result:
+    some heros
+    some enemy's
+    characters leveling system
+    g missions types
+        story missions
+        "hero missions"
+        free hero missions
+    syst missions types
+        boss fight
+        waves of enemy
+        push to point
+        capture objects
+        support payload
+        hostage
+        escape
+    missions can:
+        start every player in diff position or in same
+        end when all or one player in need place
+        end on end time
+        end on get all points/items/objects
+        end on translate object 
+        end on hit need boss enemy 
+    online co-op
+
+    
+plCh:
+    enemy's:
+        nullSector:
+            Bastion
+            or-15
+            "bloodhound" (Lanset?)
+            minn Kamikaze
+        claw:
+    heroes: (on first view, all i can see in comics)
+        Mccree
+        Anna
+        Reinhart
+        JunkRat
+        Pig
+        Symetra
+        Pharah
+        Bastion
+        Tracer
+        Solder
+        Reaper
+        Zarya
+        D.va
+        Baptist
+        Torbjern
+
