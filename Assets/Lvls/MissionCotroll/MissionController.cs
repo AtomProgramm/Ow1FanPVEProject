@@ -1,0 +1,41 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEditor;
+
+public class MissionController : MonoBehaviour
+{
+    static MissionController instance;
+
+    public List<GameObject> playersStartPositions = new List<GameObject>();
+    public List<Player> playersInstances = new List<Player>();
+
+
+    [Space(5)]
+    public List<Player> playersOnMission = new List<Player>();
+    public List<Enemy> enemyOnMission = new List<Enemy>(); //tmp?
+    public GameObject enemySpawner; // tmp
+
+
+    void Start(){ 
+        instance = this;
+        for(int ind=0; ind < playersInstances.Count; ind = ind + 1){
+            playersOnMission.Add(Instantiate(playersInstances[ind],playersStartPositions[ind].transform.position, playersStartPositions[ind].transform.rotation).GetComponent<Player>());
+        }
+    
+    }
+    void Update(){}
+
+    
+    void wonMission(){
+        foreach(var plNow in playersOnMission){
+            plNow.playWon();
+        }
+    }
+    void defeatMission(){
+        foreach(var plNow in playersOnMission){
+            plNow.playDefeat();
+        }
+    }
+
+}
