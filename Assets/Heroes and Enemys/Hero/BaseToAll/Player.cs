@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public GameObject hero; // tmp
+    public HeroBehaviors hero; // tmp
     public float hp = 100f;
     public Canvas uiCanvas;
     public FirstPersonController FPSController = null;

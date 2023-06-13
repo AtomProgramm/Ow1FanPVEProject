@@ -1,5 +1,5 @@
 -Simple mission controller
-Base enemy struck and behaviour (bastion)
+-Base enemy struck and behaviour (bastion)
 Base player "hero" struck and behaviour (not specific)
 Basic gun
 Enemy die
