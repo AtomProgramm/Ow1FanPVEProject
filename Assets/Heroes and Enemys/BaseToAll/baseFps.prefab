@@ -414,7 +414,7 @@ GameObject:
   m_Layer: 0
   m_Name: baseFps
   m_TagString: Player
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -531,6 +531,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38cfab036052e9d43b55eaea16ba9245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hero: {fileID: 0}
+  hp: 100
+  uiCanvas: {fileID: 0}
+  FPSController: {fileID: 0}
+  injured: 0
 --- !u!1 &8723913442143943232
 GameObject:
   m_ObjectHideFlags: 0

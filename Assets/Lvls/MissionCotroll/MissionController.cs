@@ -5,10 +5,10 @@ using UnityEditor;
 
 public class MissionController : MonoBehaviour
 {
-    static MissionController instance;
+    public static MissionController instance;
 
     public List<GameObject> playersStartPositions = new List<GameObject>();
-    public List<Player> playersInstances = new List<Player>();
+    public List<Player> playersPrefabs = new List<Player>();
 
 
     [Space(5)]
@@ -19,8 +19,8 @@ public class MissionController : MonoBehaviour
 
     void Start(){ 
         instance = this;
-        for(int ind=0; ind < playersInstances.Count; ind = ind + 1){
-            playersOnMission.Add(Instantiate(playersInstances[ind],playersStartPositions[ind].transform.position, playersStartPositions[ind].transform.rotation).GetComponent<Player>());
+        for(int ind=0; ind < playersPrefabs.Count; ind = ind + 1){
+            playersOnMission.Add(Instantiate(playersPrefabs[ind],playersStartPositions[ind].transform.position, playersStartPositions[ind].transform.rotation).GetComponent<Player>());
         }
     
     }
