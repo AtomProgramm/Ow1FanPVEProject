@@ -1,27 +1,38 @@
 -Simple mission controller
 -Base enemy struck and behaviour (bastion)
-Base player "hero" struck and behaviour (not specific)
-Basic gun
-Enemy die
+some rePlaning/reDoc
+~Base player "hero" struck and behaviour (not specific)
+~Basic gun
+angela implement
+    gun
+    caduceus
+    change gun
+    space ability
+    shift ability
+    ultimate
+    ui
+    injure
+enemy bastion full implement
+    injure
+    effects
+    shooting
+    couple movement
+place won trigger implement
+won and loos implement
+Regisseur - enemy spawner, scenes player
 some effects
-angela fps
-mission start - spawn player
-enemy spawner
-some effects
-trigger syst
-mission won
+missions points
+    logic operator
+    capture point
+    payload
+    item collecting
+    is all enemy dead
 infinity level - waves of enemy's
 waves mission syst + missions
-capture items syst
-capture payload syst
 simple boss enemy
 bossFight syst
 example of all missions
 heros upgrade get ability syst
-impl heroes
-impl enemy's
-impl some ability's to heroes
-create "free" missions 
 create story missions by comics 
 main menu
 network co-op
