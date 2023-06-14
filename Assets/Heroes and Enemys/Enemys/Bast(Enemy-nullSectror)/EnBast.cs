@@ -11,7 +11,7 @@ public class EnBast : MonoBehaviour, Enemy
     public float shootingRange;
     public Boolean canSeeThrowWalls;
     [Space(5)]
-    // public float maxHealth = 100;
+    public float maxHealth = 100;
     public float health = 100;
 
 
@@ -58,6 +58,18 @@ public class EnBast : MonoBehaviour, Enemy
 
     // }
 
+    public void tookDamage(float damageSize){
+        health = health - damageSize;
+        // nowAnimator.SetBool("tookDamage", false);
+        if(health < 0){
+            playDead();
+        }
+
+    }
+    public void tookHeal(float healSize){
+        health = Math.Min(maxHealth ,health + healSize);
+    }
+
     Transform getTarget(){
         var tmpCan = MissionController.instance.playersOnMission.FindAll(item => (Vector3.Angle((item.transform.position - transform.position), transform.forward) < seeAngle));
         tmpCan.Sort((it1, it2)=>Vector3.Distance(it1.transform.position, transform.position).CompareTo(Vector3.Distance(it2.transform.position, transform.position)));
@@ -84,7 +96,7 @@ public class EnBast : MonoBehaviour, Enemy
         return null;
     }
 
-    void Enemy.playDead()
+    public void playDead()
     {
         throw new NotImplementedException();
     }

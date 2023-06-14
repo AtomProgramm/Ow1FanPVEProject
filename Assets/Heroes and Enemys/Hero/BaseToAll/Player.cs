@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,12 +19,22 @@ public class Player : MonoBehaviour
         uiCanvas = GetComponentInChildren<Canvas>();
     }
 
-    void Update(){}
+    void Update(){ }
 
-    public void playWon(){
+
+    public void tookDamage(float damageSize){
+        hp = hp - damageSize;
+        // nowAnimator.SetBool("tookDamage", false);
+        if(hp < 0){
+            playInjure();
+        }
 
     }
-    public void playDefeat(){
-
+    public void tookHeal(float healSize){
+        hp = Math.Min(hero.maxHealth ,hp + healSize);
     }
+
+    public void playWon(){ }
+    public void playDefeat(){ }
+    public void playInjure(){ }
 }

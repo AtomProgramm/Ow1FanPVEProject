@@ -6,4 +6,6 @@ public interface Enemy
 {
 
     public void playDead();
+    public void tookDamage(float damageSize);
+    public void tookHeal(float healSize);
 }

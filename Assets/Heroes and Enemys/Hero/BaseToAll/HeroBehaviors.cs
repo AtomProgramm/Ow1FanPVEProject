@@ -40,13 +40,7 @@ public class HeroBehaviors : MonoBehaviour
 
 
 
-    void Start()
-    {
-        
-    }
-    
-    void Update()
-    {
-        
-    }
+
+    void Start()  { }
+    void Update() { }
 }
