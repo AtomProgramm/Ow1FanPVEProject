@@ -1,8 +1,8 @@
 -Simple mission controller
 -Base enemy struck and behaviour (bastion)
-some rePlaning/reDoc
-~Base player "hero" struck and behaviour (not specific)
-~Basic gun
+-some rePlaning/reDoc
+-Base player "hero" struck and behaviour (not specific)
+-Basic gun
 angela implement
     gun
     caduceus

@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 {
     public HeroBehaviors hero; // tmp
     public float hp = 100f;
+    public float damageModifier = 1f;
     public Canvas uiCanvas;
     public FirstPersonController FPSController = null;
     
@@ -17,6 +18,9 @@ public class Player : MonoBehaviour
     {
         FPSController = GetComponent<FirstPersonController>();
         uiCanvas = GetComponentInChildren<Canvas>();
+        //Tmp
+        // if(MissionController.instance.playersOnMission == null)MissionController.instance.playersOnMission = new List<Player>();
+        // if(!MissionController.instance.playersOnMission.Contains(this)) MissionController.instance.playersOnMission.Add(this);
     }
 
     void Update(){ }
