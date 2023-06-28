@@ -27,7 +27,7 @@ public class HeroBehaviors : MonoBehaviour
 
 
     [Space(20)]
-    public Ability ultimate;
+    public UltimateAbility ultimate;
     [Space(8)]
     public Ability abilityA;
     [Space(5)]
@@ -66,5 +66,9 @@ public class HeroBehaviors : MonoBehaviour
             i.SetActive(false);
         }
         gunPrefab[Math.Abs(nowWeaponIndex) % gunPrefab.Count].SetActive(true);
+    }
+
+    public void chargeUltimate(float size){
+        ultimate.chargeUltimate(size);
     }
 }

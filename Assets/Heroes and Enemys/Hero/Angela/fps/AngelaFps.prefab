@@ -563,6 +563,7 @@ GameObject:
   - component: {fileID: 5736606929154546876}
   - component: {fileID: 7493786291927681758}
   - component: {fileID: 2941055052350095345}
+  - component: {fileID: 1246966945591167573}
   m_Layer: 0
   m_Name: AngelaFps
   m_TagString: Player
@@ -723,7 +724,7 @@ MonoBehaviour:
   - {fileID: 3481961669014259962}
   - {fileID: 4344188694430758604}
   nowWeaponIndex: 0
-  ultimate: {fileID: 0}
+  ultimate: {fileID: 1246966945591167573}
   abilityA: {fileID: 5736606929154546876}
   abilityB: {fileID: 2941055052350095345}
   abilityC: {fileID: 0}
@@ -752,6 +753,26 @@ MonoBehaviour:
   thisPlayer: {fileID: 0}
   energyMax: 3
   speed: 17
+--- !u!114 &1246966945591167573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4631193675569988173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba77dd6c81c859d44950abc68303d438, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiSet: {fileID: 0}
+  countToUse: 1
+  coolDown: 234
+  nowUltimateCharge: 0
+  mouseSensitivity: 1
+  speedOfFlying: 72.18
+  timeToUlt: 13.64
+  heroB: {fileID: 0}
 --- !u!1 &8595778335824538550
 GameObject:
   m_ObjectHideFlags: 0
@@ -953,6 +974,10 @@ PrefabInstance:
       propertyPath: amo
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 578255684988797738, guid: f8795666847c46b44bcdac5ef5a39e87, type: 3}
+      propertyPath: ownerGun
+      value: 
+      objectReference: {fileID: 7493786291927681758}
     - target: {fileID: 578255684988797738, guid: f8795666847c46b44bcdac5ef5a39e87, type: 3}
       propertyPath: timeToReloading
       value: 1.4

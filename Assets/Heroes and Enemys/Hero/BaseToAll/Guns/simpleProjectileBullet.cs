@@ -2,31 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class simpleProjectileBullet : MonoBehaviour
+public class simpleProjectileBullet : Projectile
 {
-    public float sizeOfDamage = 1;
-    public float speed = 1;
-    public float maxTimeAlive = 60 * 15;
-    
-    void Start()
-    {
-        Destroy(gameObject, maxTimeAlive);
-    }
-
-
-    void Update()
-    {
-        transform.position = transform.position + (transform.forward * speed * Time.deltaTime);
-    }
+    public new bool destroySelfAfterHit = true;
+    public new float sizeOfDamage = 1;
+    public new float speed = 1;
+    public new float maxTimeAlive = 60 * 15;
 
     void OnCollisionEnter(Collision other)
     {
         var tmpEnemy = other.gameObject.GetComponent<Enemy>();
         if(tmpEnemy != null){
-            tmpEnemy.tookDamage(sizeOfDamage);
-            Debug.Log("Ha got damage ");
+            hitEnemyProcess(tmpEnemy);
         }
-        Debug.Log("Collision");
-        Destroy(gameObject);
     }
 }

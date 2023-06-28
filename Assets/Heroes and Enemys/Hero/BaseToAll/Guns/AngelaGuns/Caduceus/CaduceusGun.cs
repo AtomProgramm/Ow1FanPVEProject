@@ -9,6 +9,7 @@ public class CaduceusGun : MonoBehaviour, Gun
     public float maxAngleToCaptTarget;
     [Space(2)]
     public float timeToDeactivate;
+    public Boolean isUltimateNow;
 
 
     [Space(10)]

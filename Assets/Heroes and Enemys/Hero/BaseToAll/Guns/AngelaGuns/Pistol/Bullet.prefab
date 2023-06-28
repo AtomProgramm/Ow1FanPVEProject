@@ -45,6 +45,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 740308f0d4f191348b3d1fd671fb8136, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owner: {fileID: 0}
+  destroySelfAfterHit: 1
+  ultimateChargeSize: 131.85
+  sizeOfDamage: 20
+  speed: 50
+  maxTimeAlive: 900
+  destroySelfAfterHit: 1
   sizeOfDamage: 20
   speed: 50
   maxTimeAlive: 900

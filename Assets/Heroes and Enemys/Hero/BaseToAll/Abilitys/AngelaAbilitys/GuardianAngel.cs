@@ -35,6 +35,7 @@ public class GuardianAngel : Ability
             IEnumerator moveProcess(Vector3 to){
                 while(energyTimer < energyMax){
                     rigidbody.velocity = (to - transform.position).normalized * speed + (Vector3.up * 0.1f);
+                    // rigidbody.AddForce((to - transform.position).normalized * speed + (Vector3.up * 0.1f) - rigidbody.velocity, ForceMode.VelocityChange);
                     energyTimer = energyTimer + Time.deltaTime;
                     if(Vector3.Distance(to, transform.position) <= minDist){
                         break;
@@ -42,6 +43,7 @@ public class GuardianAngel : Ability
                     // if(Input.GetKey(SettingsContainer.instanceOfSettingContainer.jump)){
                     if(Input.GetKey(KeyCode.Space)){
                         rigidbody.velocity = (to - transform.position).normalized * speed + Vector3.up;
+                        // rigidbody.AddForce((to - transform.position).normalized * speed + Vector3.up - rigidbody.velocity, ForceMode.VelocityChange);
                         energyTimer = 0;
                         break;
                     }
@@ -49,6 +51,8 @@ public class GuardianAngel : Ability
                     if(Input.GetKey(KeyCode.LeftControl)){
                         energyTimer = 0;
                         rigidbody.velocity = new Vector3(0, speed,0);
+                        // rigidbody.AddForce(new Vector3(0, speed,0)  - rigidbody.velocity, ForceMode.VelocityChange);
+
                         break;
                     }
                     yield return null;
