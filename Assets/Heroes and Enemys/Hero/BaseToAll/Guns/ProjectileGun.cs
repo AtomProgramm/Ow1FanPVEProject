@@ -6,11 +6,12 @@ public class ProjectileGun : MonoBehaviour, Gun
 {
     
     private float timerBetweenShoot;
-    private int amoNow;
+    public int amoNow;
     private Camera fpsCam;
 
 
     public float timeBetweenShootSize;
+    public float timeToReloading;
     public int amo;
     public GameObject positionToSpawnBullet;
     public GameObject bulletPrefab;
@@ -26,7 +27,11 @@ public class ProjectileGun : MonoBehaviour, Gun
     }
     public void reload()
     {
-        amoNow = amo;
+        IEnumerator reloadSetOnTime(){
+            yield return new WaitForSeconds(timeToReloading);
+            amoNow = amo;
+        }
+        StartCoroutine(reloadSetOnTime());
     }
 
     void Start()

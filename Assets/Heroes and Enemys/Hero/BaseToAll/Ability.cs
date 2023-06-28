@@ -2,18 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ability : MonoBehaviour
+public abstract class Ability : MonoBehaviour
 {
+    public GameObject uiSet;
+    [Space(10)]
     public int countToUse = 1;
     public float coolDown;
 
 
-    private float timer;
+    protected float coolDownTimer;
+    protected bool coolDownNow;
 
 
-    public void execute(){
 
-    }
+    public abstract void execute();
 
 
     void Start(){}

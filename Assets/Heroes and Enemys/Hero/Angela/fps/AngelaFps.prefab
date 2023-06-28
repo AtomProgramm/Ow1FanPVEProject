@@ -560,7 +560,9 @@ GameObject:
   - component: {fileID: 4631193675569988166}
   - component: {fileID: 4631193675569988167}
   - component: {fileID: 8170697206945403369}
+  - component: {fileID: 5736606929154546876}
   - component: {fileID: 7493786291927681758}
+  - component: {fileID: 2941055052350095345}
   m_Layer: 0
   m_Name: AngelaFps
   m_TagString: Player
@@ -643,7 +645,7 @@ MonoBehaviour:
   playerCanMove: 1
   walkSpeed: 5
   maxVelocityChange: 10
-  enableSprint: 1
+  enableSprint: 0
   unlimitedSprint: 1
   sprintKey: 304
   sprintSpeed: 7
@@ -687,6 +689,21 @@ MonoBehaviour:
   uiCanvas: {fileID: 0}
   FPSController: {fileID: 0}
   injured: 0
+--- !u!114 &5736606929154546876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4631193675569988173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0492e303213a18b41bf03c9065fc9609, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiSet: {fileID: 0}
+  countToUse: 1
+  coolDown: 0
 --- !u!114 &7493786291927681758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -699,16 +716,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7995369f37d6cdb49b471b6ccc433191, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itPlayable: 1
   size: {x: 0.9, y: 0.9, z: 0.9}
   speed: 5
-  gunPrefab: {fileID: 0}
+  gunPrefab:
+  - {fileID: 3481961669014259962}
+  - {fileID: 4344188694430758604}
+  nowWeaponIndex: 0
   ultimate: {fileID: 0}
-  abilityA: {fileID: 0}
-  abilityB: {fileID: 0}
+  abilityA: {fileID: 5736606929154546876}
+  abilityB: {fileID: 2941055052350095345}
   abilityC: {fileID: 0}
   abilityD: {fileID: 0}
   uiOf: {fileID: 0}
   maxHealth: 200
+--- !u!114 &2941055052350095345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4631193675569988173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c1b365ee8be3ca4cb5d6d0f00265804, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiSet: {fileID: 0}
+  countToUse: 1
+  coolDown: 1.5
+  maxAngle: 40
+  maxDist: 30
+  minDist: 2
+  camera: {fileID: 0}
+  thisPlayer: {fileID: 0}
+  energyMax: 3
+  speed: 17
 --- !u!1 &8595778335824538550
 GameObject:
   m_ObjectHideFlags: 0
@@ -875,8 +918,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: CaduceusGun
       objectReference: {fileID: 0}
+    - target: {fileID: 4287769319521864835, guid: 45bd93b8eed6a0443a8b4541c2bc6571, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5053377315598752001, guid: 45bd93b8eed6a0443a8b4541c2bc6571, type: 3}
+      propertyPath: buffPart
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5053377315598752001, guid: 45bd93b8eed6a0443a8b4541c2bc6571, type: 3}
+      propertyPath: healPerSecond
+      value: 55
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45bd93b8eed6a0443a8b4541c2bc6571, type: 3}
+--- !u!1 &4344188694430758604 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4287769319521864835, guid: 45bd93b8eed6a0443a8b4541c2bc6571, type: 3}
+  m_PrefabInstance: {fileID: 560873952528529999}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4344188694430758605 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4287769319521864834, guid: 45bd93b8eed6a0443a8b4541c2bc6571, type: 3}
@@ -891,11 +951,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 578255684988797738, guid: f8795666847c46b44bcdac5ef5a39e87, type: 3}
       propertyPath: amo
-      value: 214
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 578255684988797738, guid: f8795666847c46b44bcdac5ef5a39e87, type: 3}
+      propertyPath: timeToReloading
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 578255684988797738, guid: f8795666847c46b44bcdac5ef5a39e87, type: 3}
       propertyPath: timeBetweenShootSize
-      value: 0.1
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 578255684988797738, guid: f8795666847c46b44bcdac5ef5a39e87, type: 3}
       propertyPath: positionToSpawnBullet

@@ -8,6 +8,9 @@ public interface Gun
     // public GameObject altShootEffectPrefab;
 
     // public Animator animatorOfGun;
+    // private GameObject rootOfGun;
+
+    // GameObject RootOfGun { get; set; }
 
     public void shoot();
     public void altShoot();

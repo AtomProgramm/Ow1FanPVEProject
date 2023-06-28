@@ -4,11 +4,11 @@
 -Base player "hero" struck and behaviour (not specific)
 -Basic gun
 angela implement
-    gun
-    caduceus
-    change gun
-    space ability
-    shift ability
+    -gun
+    -caduceus
+    -change gun
+    -space ability
+    -shift ability
     ultimate
     ui
     injure
