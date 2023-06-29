@@ -30,7 +30,7 @@ public class ultimateUI : UIItem
         float step = (valNew - valNow) / timeToChange;
         valNow = valNow + (step * Time.deltaTime);
         valNow = Math.Max(0, valNow);
-        if(valNow >= 100){
+        if(valNew >= 100){
             imageFullCharge.SetActive(true);
             num.gameObject.SetActive(false);
             chargeCircle.gameObject.SetActive(false);
@@ -39,6 +39,10 @@ public class ultimateUI : UIItem
             num.text = (((int)Math.Round(valNow)).ToString());
 
             chargeCircle.value = valNow / 100;
+
+            imageFullCharge.SetActive(false);
+            num.gameObject.SetActive(true);
+            chargeCircle.gameObject.SetActive(true);
         }
     }
 }

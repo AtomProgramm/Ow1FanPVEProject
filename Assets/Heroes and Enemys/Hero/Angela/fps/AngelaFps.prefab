@@ -971,6 +971,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4631193674040936540}
     m_Modifications:
+    - target: {fileID: 3051778802427494485, guid: c87a39a61eb69dd46b05eccc254f42af, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3051778802427494485, guid: c87a39a61eb69dd46b05eccc254f42af, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3138736800152959705, guid: c87a39a61eb69dd46b05eccc254f42af, type: 3}
       propertyPath: m_Name
       value: UltimateCharge
@@ -1059,6 +1067,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4823473168696282910, guid: c87a39a61eb69dd46b05eccc254f42af, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: 4837fd180c6d7ea4d9e8856951e8239e, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c87a39a61eb69dd46b05eccc254f42af, type: 3}
 --- !u!224 &2243371144250106994 stripped
