@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
   destroySelfAfterHit: 1
-  ultimateChargeSize: 131.85
+  ultimateChargeSize: 1
   sizeOfDamage: 20
   speed: 50
   maxTimeAlive: 900

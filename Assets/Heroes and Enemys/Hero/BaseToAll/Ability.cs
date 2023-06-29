@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Ability : MonoBehaviour
 {
-    public GameObject uiSet;
+    public UIItem uiSet;
     [Space(10)]
     public int countToUse = 1;
     public float coolDown;

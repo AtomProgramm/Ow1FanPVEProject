@@ -9,7 +9,7 @@ angela implement
     -change gun
     -space ability
     -shift ability
-    ultimate
+    -ultimate
     ui
     injure
 enemy bastion full implement

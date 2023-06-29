@@ -35,9 +35,11 @@ public class AngelaUltimate : UltimateAbility
 
     void Update()
     {
+        uiSet.setValueOfThisUI(nowUltimateCharge);
         if(Input.GetKey(KeyCode.Q)){
             ultimateExecute();
         }
+        
     }
 
     public override void execute(){
