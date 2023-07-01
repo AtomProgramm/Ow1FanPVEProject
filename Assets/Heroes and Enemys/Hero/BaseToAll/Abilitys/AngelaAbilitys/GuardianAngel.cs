@@ -34,6 +34,7 @@ public class GuardianAngel : Ability
 
             IEnumerator moveProcess(Vector3 to){
                 while(energyTimer < energyMax){
+                    // uiSet.setValueOfThisUI(coolDownTimer);
                     rigidbody.velocity = (to - transform.position).normalized * speed + (Vector3.up * 0.1f);
                     // rigidbody.AddForce((to - transform.position).normalized * speed + (Vector3.up * 0.1f) - rigidbody.velocity, ForceMode.VelocityChange);
                     energyTimer = energyTimer + Time.deltaTime;
@@ -89,6 +90,9 @@ public class GuardianAngel : Ability
     {
         if(coolDownNow){
             coolDownTimer = coolDownTimer - Time.deltaTime;
+            uiSet.setValueOfThisUI(coolDownTimer);
+        }else{
+            uiSet.setValueOfThisUI(-1);
         }
         if(coolDownTimer < 0){
             coolDownNow = false;
