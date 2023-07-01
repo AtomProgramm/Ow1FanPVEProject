@@ -13,6 +13,8 @@ public class EnBast : MonoBehaviour, Enemy
     [Space(5)]
     public float maxHealth = 100;
     public float health = 100;
+    [Space(5)]
+    public GameObject deadEffect;
 
 
 
@@ -98,6 +100,7 @@ public class EnBast : MonoBehaviour, Enemy
 
     public void playDead()
     {
-        throw new NotImplementedException();
+        Destroy(Instantiate(deadEffect,transform.position,transform.rotation), 4);
+        Destroy(gameObject);
     }
 }
