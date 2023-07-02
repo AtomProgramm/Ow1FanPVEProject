@@ -664,10 +664,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canSeeRange: 500
   seeAngle: 360
-  shootingRange: 500
+  shootingRange: 200
   canSeeThrowWalls: 0
-  maxHealth: 100
-  health: 100
+  maxHealth: 200
+  health: 200
   deadEffect: {fileID: 6122816319762520373, guid: f4af593bb33aa9b40b61d2b6ee3a393b, type: 3}
 --- !u!136 &3347188429929985126
 CapsuleCollider:

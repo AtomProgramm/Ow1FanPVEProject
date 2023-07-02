@@ -39,18 +39,22 @@ public class HeroBehaviors : MonoBehaviour
 
 
     [Space(20)]
-    public GameObject uiOf;
+    public UIHeroState uiOf;
 
 
     [Space(20)]
     public float maxHealth;
+    public float hp;
 
 
 
 
-    void Start()  { }
+    void Start()  { 
+        hp = maxHealth;
+    }
     void Update() { 
         if(itPlayable){
+            uiOf.setHealth(hp, maxHealth);
             if(Input.GetAxis("Mouse ScrollWheel") > 0){
                 nowWeaponIndex = nowWeaponIndex + 1;
                 changeWeapon();

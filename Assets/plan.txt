@@ -13,7 +13,7 @@ angela implement
     ui
     injure
 enemy bastion full implement
-    injure
+    ~injure
     effects
     shooting
     couple movement
