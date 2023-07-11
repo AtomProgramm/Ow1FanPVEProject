@@ -21,7 +21,7 @@ public abstract class Projectile : MonoBehaviour
         transform.position = transform.position + (transform.forward * speed * Time.deltaTime);
     }
     public void hitEnemyProcess(Enemy enemy){
-        enemy.tookDamage(sizeOfDamage);
+        enemy.tookDamage(sizeOfDamage, owner);
         if(owner != null){
             owner.chargeUltimate(ultimateChargeSize);
         }

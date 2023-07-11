@@ -11,6 +11,7 @@ public class EnBast : MonoBehaviour, Enemy
     public float shootingRange;
     public Boolean canSeeThrowWalls;
     [Space(5)]
+    public Boolean getToTargetWhoHit;
     public Boolean momentumForgetTheTarget;
     public Boolean haveTimeToForget;
     public float timeToForget;
@@ -94,13 +95,15 @@ public class EnBast : MonoBehaviour, Enemy
         timerBetweenShoot = timerBetweenShoot - Time.deltaTime;
     }
 
-    public void tookDamage(float damageSize){
+    public void tookDamage(float damageSize, HeroBehaviors fromWho = null){
+        if(getToTargetWhoHit && (fromWho != null)){
+            nowTarget = fromWho.transform;
+        }
         health = health - damageSize;
         // nowAnimator.SetBool("tookDamage", false);
         if(health < 0){
             playDead();
         }
-
     }
     public void tookHeal(float healSize){
         health = Math.Min(maxHealth ,health + healSize);

@@ -666,6 +666,7 @@ MonoBehaviour:
   seeAngle: 360
   shootingRange: 200
   canSeeThrowWalls: 0
+  getToTargetWhoHit: 1
   momentumForgetTheTarget: 0
   haveTimeToForget: 1
   timeToForget: 2
