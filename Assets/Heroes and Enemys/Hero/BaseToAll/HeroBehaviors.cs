@@ -40,6 +40,7 @@ public class HeroBehaviors : MonoBehaviour
 
     [Space(20)]
     public UIHeroState uiOf;
+    public UIGuns uiOfGuns;
 
 
     [Space(20)]
@@ -70,6 +71,7 @@ public class HeroBehaviors : MonoBehaviour
             i.SetActive(false);
         }
         gunPrefab[Math.Abs(nowWeaponIndex) % gunPrefab.Count].SetActive(true);
+        uiOfGuns.setNowGun(Math.Abs(nowWeaponIndex));
     }
 
     public void chargeUltimate(float size){

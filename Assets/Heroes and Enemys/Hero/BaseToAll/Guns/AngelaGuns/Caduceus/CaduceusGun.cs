@@ -32,6 +32,11 @@ public class CaduceusGun : MonoBehaviour, Gun
 
 
 
+    [Space(10)]
+    public UIGuns uiOfGun;
+
+
+
     private Player target;
     private Player thisPlayer;
     private bool nowBuffNoHeal;
@@ -151,6 +156,7 @@ public class CaduceusGun : MonoBehaviour, Gun
 
     void Update()
     {
+        uiOfGun.setAmoNow(0,0,true);
         
         var tmpCan = MissionController.instance.playersOnMission.FindAll( item => (Vector3.Angle((item.transform.position - transform.position), transform.forward) < maxAngleToCaptTarget));
         tmpCan.Sort((it1, it2)=>Vector3.Angle((it1.transform.position - pointOfStartTracer.transform.position), transform.forward).CompareTo(

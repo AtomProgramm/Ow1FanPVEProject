@@ -17,6 +17,11 @@ public class ProjectileGun : MonoBehaviour, Gun
     public GameObject positionToSpawnBullet;
     public GameObject bulletPrefab;
     public Animator animator;
+    [Space(10)]
+    public UIGuns uiOfGun;
+
+
+
     public void altShoot()
     {
         //noHaveAltShoot
@@ -68,5 +73,6 @@ public class ProjectileGun : MonoBehaviour, Gun
             }
         }
         
+        uiOfGun.setAmoNow(amoNow, amo);
     }
 }
