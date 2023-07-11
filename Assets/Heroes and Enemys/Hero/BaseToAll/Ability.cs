@@ -18,6 +18,21 @@ public abstract class Ability : MonoBehaviour
     public abstract void execute();
 
 
-    void Start(){}
-    void Update(){}
+    // void Start(){}
+    // void Update(){countCoolDownIfItIs();}
+
+//todo: type call this method on all already implemented child class
+    public void countCoolDownIfItIs(){
+        if(coolDownNow){
+            coolDownTimer = coolDownTimer - Time.deltaTime;
+            if(coolDownTimer < 0){
+                coolDownNow = false;
+                coolDownTimer  = coolDown;
+            } 
+        }
+    }
+    public void setNowCoolDown(){
+        coolDownNow = true;
+        coolDownTimer  = coolDown;
+    }
 }

@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public HeroBehaviors hero; // tmp
-    public float hp = 100f;
+    public HeroBehaviors hero; 
     public float damageModifier = 1f;
     public Canvas uiCanvas;
     public FirstPersonController FPSController = null;
@@ -27,18 +26,21 @@ public class Player : MonoBehaviour
 
 
     public void tookDamage(float damageSize){
-        hp = hp - damageSize;
+        hero.hp = hero.hp - damageSize;
         // nowAnimator.SetBool("tookDamage", false);
-        if(hp < 0){
+        if(hero.hp < 0){
             playInjure();
         }
 
     }
     public void tookHeal(float healSize){
-        hp = Math.Min(hero.maxHealth ,hp + healSize);
+        hero.hp = Math.Min(hero.maxHealth ,hero.hp + healSize);
     }
 
     public void playWon(){ }
     public void playDefeat(){ }
-    public void playInjure(){ }
+    public void playInjure(){ 
+        injured = true;
+        FPSController.enabled = false;
+    }
 }

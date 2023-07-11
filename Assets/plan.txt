@@ -10,8 +10,9 @@ angela implement
     -space ability
     -shift ability
     -ultimate
-    ui
-    injure
+    ~ui
+    ~injure
+    uiGuns
 enemy bastion full implement
     ~injure
     effects
@@ -42,73 +43,30 @@ effects and polishing
 
 
 
-some free desc to my self, to get better architecture 
-
-entitys:
-    enemy:
-        contain:
-            hp or process to be bitted
-            speed, attacks
-        can:
-            attack players or "payload"
-    hero:
-        contain:
-            gun 
-            cosmetics
-            abilities
-            hatbox collider model...
-            sounds
-    player:
-        contain:
+~~~~~~~~~ some try figure arch sign ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+triggers > (logicOfOther, points, payloads, enemyObserver, bossObserver, itemsCollect, hostagesObservers, stationsProtect)
+mission
+    playWon()
+    playDefeat()
+    players[]
+        uiCanvas
+        isInjure
+        playWon()
+        playDefeat()
+        playInjure()
+        heroes
+            uis 
+            guns[]
+            ultAbilities
+            passiveAbilities[]
+            hpMax
             hp
-        can:
-            be controlled by network
-            control gun
-    point:
-        contain:
-            speed capture
-            now captured
-        can:
-            send progress to mission 
-            be captured
-    payload:
-        contain:
-            speed capture
-            now captured
-        can:
-            send progress to mission 
-            be captured
-    item:
-        contain:
-            speed capture
-            now captured
-        can:
-            send progress to mission 
-            be captured
-    hostage:
-        can:
-            be captured
-    gun:
-        contain:
-            type damage
-        can:
-            damage enemy
-    mission:
-        can contain:
-            players and they states
-            enemy
-            points and they states
-            payloads and they states
-            items and they states
-            hostages and they states
-        can:
-            be won or loose 
-        can be implement by:
-            controller class new about all targets on session
-            >target objects (points, payloads, enemy..) new about controller and call his when he need
+            sizes
+            model
+Regisseur > ...
+enemies > ...
 
-
-
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 
@@ -179,3 +137,71 @@ plCh:
         Baptist
         Torbjern
 
+
+
+
+
+-tmpBecauseScarryToDel (yeah in git ._.)--tmp----tmp----tmp----tmp----tmp----tmp----tmp----tmp----tmp----tmp----tmp----tmp----tmp----tmp----tmp----tmp----tmp----tmp----tmp----tmp----tmp----tmp----tmp----tmp--
+
+entitys:
+    enemy:
+        contain:
+            hp or process to be bitted
+            speed, attacks
+        can:
+            attack players or "payload"
+    hero:
+        contain:
+            gun 
+            cosmetics
+            abilities
+            hatbox collider model...
+            sounds
+    player:
+        contain:
+            hp
+        can:
+            be controlled by network
+            control gun
+    point:
+        contain:
+            speed capture
+            now captured
+        can:
+            send progress to mission 
+            be captured
+    payload:
+        contain:
+            speed capture
+            now captured
+        can:
+            send progress to mission 
+            be captured
+    item:
+        contain:
+            speed capture
+            now captured
+        can:
+            send progress to mission 
+            be captured
+    hostage:
+        can:
+            be captured
+    gun:
+        contain:
+            type damage
+        can:
+            damage enemy
+    mission:
+        can contain:
+            players and they states
+            enemy
+            points and they states
+            payloads and they states
+            items and they states
+            hostages and they states
+        can:
+            be won or loose 
+        can be implement by:
+            controller class new about all targets on session
+            >target objects (points, payloads, enemy..) new about controller and call his when he need

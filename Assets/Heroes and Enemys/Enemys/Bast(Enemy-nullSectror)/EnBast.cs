@@ -11,6 +11,12 @@ public class EnBast : MonoBehaviour, Enemy
     public float shootingRange;
     public Boolean canSeeThrowWalls;
     [Space(5)]
+    public GameObject prefabOfBullet;
+    // public float sizeOfDamage;
+    public GameObject pointToSpawnBullet;
+    public float timeBetweenShoot = 0.5f;
+    private float timerBetweenShoot = -1;
+    [Space(5)]
     public float maxHealth = 100;
     public float health = 100;
     [Space(5)]
@@ -46,6 +52,7 @@ public class EnBast : MonoBehaviour, Enemy
             if(Vector3.Distance(transform.position, nowTarget.transform.position) < shootingRange){
                 navAgent.SetDestination(nowTarget.transform.position);
                 nowAnimator.SetBool("shooting", true);
+                processShooting();
             }else{
                 nowAnimator.SetBool("shooting", false);
             }
@@ -57,8 +64,13 @@ public class EnBast : MonoBehaviour, Enemy
     }
 
     // bool processShooting(){
-
-    // }
+    void processShooting(){
+        if(timerBetweenShoot <= 0){
+            Instantiate(prefabOfBullet, pointToSpawnBullet.transform.position, pointToSpawnBullet.transform.rotation);
+            timerBetweenShoot = timeBetweenShoot;
+        }
+        timerBetweenShoot = timerBetweenShoot - Time.deltaTime;
+    }
 
     public void tookDamage(float damageSize){
         health = health - damageSize;

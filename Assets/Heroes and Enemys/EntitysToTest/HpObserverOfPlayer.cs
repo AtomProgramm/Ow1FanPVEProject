@@ -16,9 +16,9 @@ public class HpObserverOfPlayer : MonoBehaviour
 
     void Update()
     {
-        if(player.hp != lastHp){
-            lastHp = player.hp; 
-            sliderHp.value = player.hp / player.hero.maxHealth;
+        if(player.hero.hp != lastHp){
+            lastHp = player.hero.hp; 
+            sliderHp.value = player.hero.hp / player.hero.maxHealth;
         }
     }
 }

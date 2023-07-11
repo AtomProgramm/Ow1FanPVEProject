@@ -1536,11 +1536,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2034076612894939632, guid: 78afd6d7626dc3b48835a3e4c78d1763, type: 3}
       propertyPath: shootingRange
-      value: 5
+      value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 2034076612894939632, guid: 78afd6d7626dc3b48835a3e4c78d1763, type: 3}
+      propertyPath: prefabOfBullet
+      value: 
+      objectReference: {fileID: 5910790463083888499, guid: 98cd9590f4317424097ed6ba3208a2cf, type: 3}
     - target: {fileID: 2034076612894939632, guid: 78afd6d7626dc3b48835a3e4c78d1763, type: 3}
       propertyPath: canSeeThrowWalls
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2034076612894939632, guid: 78afd6d7626dc3b48835a3e4c78d1763, type: 3}
+      propertyPath: timeBetweenShoot
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 5012108207839741345, guid: 78afd6d7626dc3b48835a3e4c78d1763, type: 3}
       propertyPath: m_Name

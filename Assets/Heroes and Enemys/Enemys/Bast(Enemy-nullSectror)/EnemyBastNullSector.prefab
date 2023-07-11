@@ -666,6 +666,9 @@ MonoBehaviour:
   seeAngle: 360
   shootingRange: 200
   canSeeThrowWalls: 0
+  prefabOfBullet: {fileID: 2080408340283648546, guid: b4188efbc45af384995f1dd89c4fabce, type: 3}
+  pointToSpawnBullet: {fileID: 6314651423584573726}
+  timeBetweenShoot: 0.1
   maxHealth: 200
   health: 200
   deadEffect: {fileID: 6122816319762520373, guid: f4af593bb33aa9b40b61d2b6ee3a393b, type: 3}
@@ -808,6 +811,36 @@ Transform:
   m_Father: {fileID: 1457112970805845321}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6314651423584573726
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2004018745097604100}
+  m_Layer: 0
+  m_Name: PointShoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2004018745097604100
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6314651423584573726}
+  m_LocalRotation: {x: 0.70710695, y: 0.00000014340793, z: 0.000000056703996, w: 0.7071067}
+  m_LocalPosition: {x: 0.0057937424, y: -0.010041769, z: 0.009792769}
+  m_LocalScale: {x: 0.009999996, y: 0.009999999, z: 0.009999995}
+  m_Children: []
+  m_Father: {fileID: 8451106307503612884}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6399790063300471409
 GameObject:
   m_ObjectHideFlags: 0
@@ -835,7 +868,8 @@ Transform:
   m_LocalRotation: {x: -0.7071068, y: 1.54758e-10, z: -6.9147126e-11, w: 0.7071067}
   m_LocalPosition: {x: 0.000000018626451, y: -0.0000000031292458, z: 0.000000011920926}
   m_LocalScale: {x: 100, y: 100, z: 100}
-  m_Children: []
+  m_Children:
+  - {fileID: 2004018745097604100}
   m_Father: {fileID: 5676019254901333787}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
