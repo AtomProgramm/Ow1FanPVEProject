@@ -3,7 +3,7 @@
 -some rePlaning/reDoc
 -Base player "hero" struck and behaviour (not specific)
 -Basic gun
-angela implement
+~angela implement
     -gun
     -caduceus
     -change gun
@@ -12,12 +12,14 @@ angela implement
     -ultimate
     ~ui
     ~injure
-    uiGuns
+    ~uiGuns
 enemy bastion full implement
     ~injure
-    effects
-    shooting
+    ~shooting
+    setting loose target
+    get target by shoot
     couple movement
+    effects
 place won trigger implement
 won and loos implement
 Regisseur - enemy spawner, scenes player

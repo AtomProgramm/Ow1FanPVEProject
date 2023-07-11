@@ -666,6 +666,9 @@ MonoBehaviour:
   seeAngle: 360
   shootingRange: 200
   canSeeThrowWalls: 0
+  momentumForgetTheTarget: 0
+  haveTimeToForget: 1
+  timeToForget: 2
   prefabOfBullet: {fileID: 2080408340283648546, guid: b4188efbc45af384995f1dd89c4fabce, type: 3}
   pointToSpawnBullet: {fileID: 6314651423584573726}
   timeBetweenShoot: 0.1

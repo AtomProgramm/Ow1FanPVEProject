@@ -11,6 +11,10 @@ public class EnBast : MonoBehaviour, Enemy
     public float shootingRange;
     public Boolean canSeeThrowWalls;
     [Space(5)]
+    public Boolean momentumForgetTheTarget;
+    public Boolean haveTimeToForget;
+    public float timeToForget;
+    [Space(5)]
     public GameObject prefabOfBullet;
     // public float sizeOfDamage;
     public GameObject pointToSpawnBullet;
@@ -24,6 +28,8 @@ public class EnBast : MonoBehaviour, Enemy
 
 
 
+    float timerToForget;
+
     private Transform nowTarget = null;
     private UnityEngine.AI.NavMeshAgent navAgent;
     private Collider thisCollider;
@@ -36,11 +42,27 @@ public class EnBast : MonoBehaviour, Enemy
         nowAnimator = GetComponent<Animator>();
 
         // MissionController.instance.enemyOnMission.Add(this);
+        timerToForget = timeToForget;
     }
 
     void FixedUpdate()
     {
-        nowTarget = getTarget();
+        var tmpTarget = getTarget();
+        if((tmpTarget == null) && (nowTarget != null)){
+            if(momentumForgetTheTarget){
+                nowTarget = null;
+            }else if(haveTimeToForget){
+                if(timerToForget < 0){
+                    timerToForget = timeToForget;
+                    nowTarget = null;
+                }else{
+                    timerToForget = timerToForget - Time.fixedDeltaTime;
+                }
+            }
+
+        }else{
+            nowTarget = tmpTarget;
+        }
     }
 
     void Update()
