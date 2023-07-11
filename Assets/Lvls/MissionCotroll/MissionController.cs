@@ -24,7 +24,20 @@ public class MissionController : MonoBehaviour
         }
     
     }
-    void Update(){}
+    void Update(){
+        var isNowDefeat = false;
+        foreach(var plNow in playersOnMission){
+            if(! plNow.injured){
+                isNowDefeat = false;
+                break;
+            }else{
+                isNowDefeat = true;
+            }
+        }
+        if(isNowDefeat){
+            defeatMission();
+        }
+    }
 
     
     void wonMission(){

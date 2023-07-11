@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -42,23 +43,23 @@ public class Player : MonoBehaviour
     }
 
     public void playWon(){
-        plVictory.tryStartAnimation();
         void won(){
             // change scene and other...
+            SceneManager.LoadScene("TmpAlternativeScene", LoadSceneMode.Single);//tmp to test
         }    
         plVictory.doOnEndAnimation += won;  
+        plVictory.tryStartAnimation();
     }
     public void playDefeat(){ 
-        plDefeat.tryStartAnimation();
         void defeat(){
             // change scene and other...
+            SceneManager.LoadScene("TmpAlternativeScene", LoadSceneMode.Single);//tmp to test
         }  
         plDefeat.doOnEndAnimation += defeat;  
+        plDefeat.tryStartAnimation();
     }
     public void playInjure(){ 
         injured = true;
         FPSController.enabled = false;
-
-        playDefeat();
     }
 }

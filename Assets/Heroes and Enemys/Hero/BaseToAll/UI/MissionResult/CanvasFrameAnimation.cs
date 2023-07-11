@@ -27,6 +27,7 @@ public class CanvasFrameAnimation : MonoBehaviour
         nowAnimation = null;
         toShow.enabled = false;
         toShow.color = new Color(0,0,0,1);
+        doOnEndAnimation.Invoke();
     }
     public Boolean tryStartAnimation(){
         if(nowAnimation == null){
