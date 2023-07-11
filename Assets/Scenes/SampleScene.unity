@@ -1535,6 +1535,10 @@ PrefabInstance:
       value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 2034076612894939632, guid: 78afd6d7626dc3b48835a3e4c78d1763, type: 3}
+      propertyPath: timeToForget
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2034076612894939632, guid: 78afd6d7626dc3b48835a3e4c78d1763, type: 3}
       propertyPath: shootingRange
       value: 100
       objectReference: {fileID: 0}
@@ -1545,6 +1549,10 @@ PrefabInstance:
     - target: {fileID: 2034076612894939632, guid: 78afd6d7626dc3b48835a3e4c78d1763, type: 3}
       propertyPath: canSeeThrowWalls
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2034076612894939632, guid: 78afd6d7626dc3b48835a3e4c78d1763, type: 3}
+      propertyPath: haveTimeToForget
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2034076612894939632, guid: 78afd6d7626dc3b48835a3e4c78d1763, type: 3}
       propertyPath: timeBetweenShoot

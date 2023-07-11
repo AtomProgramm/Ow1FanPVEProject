@@ -17,8 +17,7 @@ enemy bastion full implement
     ~injure
     ~shooting
     -setting loose target
-    get target by shoot
-    couple movement
+    -get target by shoot
     effects
 place won trigger implement
 won and loos implement

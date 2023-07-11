@@ -26,6 +26,7 @@ public class EnBast : MonoBehaviour, Enemy
     public float health = 100;
     [Space(5)]
     public GameObject deadEffect;
+    public GameObject shootEffect;
 
 
 
@@ -90,6 +91,7 @@ public class EnBast : MonoBehaviour, Enemy
     void processShooting(){
         if(timerBetweenShoot <= 0){
             Instantiate(prefabOfBullet, pointToSpawnBullet.transform.position, pointToSpawnBullet.transform.rotation);
+            Instantiate(shootEffect, pointToSpawnBullet.transform);
             timerBetweenShoot = timeBetweenShoot;
         }
         timerBetweenShoot = timerBetweenShoot - Time.deltaTime;
