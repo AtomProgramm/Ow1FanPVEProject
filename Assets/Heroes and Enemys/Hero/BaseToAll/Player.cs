@@ -1,3 +1,4 @@
+using System.Security.Cryptography.X509Certificates;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,7 +10,10 @@ public class Player : MonoBehaviour
     public float damageModifier = 1f;
     public Canvas uiCanvas;
     public FirstPersonController FPSController = null;
-    
+
+    [Space(5)]
+    public CanvasFrameAnimation plDefeat;
+    public CanvasFrameAnimation plVictory;
     [Space(5)]
     public bool injured;
 
@@ -22,7 +26,7 @@ public class Player : MonoBehaviour
         // if(!MissionController.instance.playersOnMission.Contains(this)) MissionController.instance.playersOnMission.Add(this);
     }
 
-    void Update(){ }
+    void Update(){}
 
 
     public void tookDamage(float damageSize){
@@ -37,10 +41,24 @@ public class Player : MonoBehaviour
         hero.hp = Math.Min(hero.maxHealth ,hero.hp + healSize);
     }
 
-    public void playWon(){ }
-    public void playDefeat(){ }
+    public void playWon(){
+        plVictory.tryStartAnimation();
+        void won(){
+            // change scene and other...
+        }    
+        plVictory.doOnEndAnimation += won;  
+    }
+    public void playDefeat(){ 
+        plDefeat.tryStartAnimation();
+        void defeat(){
+            // change scene and other...
+        }  
+        plDefeat.doOnEndAnimation += defeat;  
+    }
     public void playInjure(){ 
         injured = true;
         FPSController.enabled = false;
+
+        playDefeat();
     }
 }

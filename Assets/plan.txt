@@ -13,14 +13,14 @@
     ~ui
     ~injure
     ~uiGuns
-enemy bastion full implement
+-enemy bastion full implement
     ~injure
     ~shooting
     -setting loose target
     -get target by shoot
-    effects
-place won trigger implement
+    -effects
 won and loos implement
+won triggerPlace  implement
 Regisseur - enemy spawner, scenes player
 some effects
 missions points
