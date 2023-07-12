@@ -40,12 +40,12 @@ public class MissionController : MonoBehaviour
     }
 
     
-    void wonMission(){
+    public void wonMission(){
         foreach(var plNow in playersOnMission){
             plNow.playWon();
         }
     }
-    void defeatMission(){
+    public void defeatMission(){
         foreach(var plNow in playersOnMission){
             plNow.playDefeat();
         }

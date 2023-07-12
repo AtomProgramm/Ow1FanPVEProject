@@ -19,8 +19,8 @@
     -setting loose target
     -get target by shoot
     -effects
-won and loos implement
-won triggerPlace  implement
+won defeat logic and triggers 
+resurrect angela
 Regisseur - enemy spawner, scenes player
 some effects
 missions points
