@@ -11,6 +11,8 @@ using UnityEditor;
 public class PlayerTrigger : MonoBehaviour
 {
     public Boolean needAllPlayersCondition = false;
+    // public Boolean enemyStopCondition = false;  to other trigger?
+    public Boolean enemyStopCondition = false;
     public UnityEvent doOnConditions;
     public UnityEvent notConditions;
 
@@ -25,15 +27,27 @@ public class PlayerTrigger : MonoBehaviour
 
 
     private List<Player> allPlayersNowInTrigger = new List<Player>();
+    private List<Enemy> allEnemiesNowInTrigger = new List<Enemy>();
     
 
     void Start() {
         GetComponent<Collider>().isTrigger = true;
     }
 
+    public int getNowCountPlayerInTrigger(){
+        return allPlayersNowInTrigger.Count;
+    }
 
     void OnTriggerEnter(Collider other)
     {
+        if(enemyStopCondition){
+            var enemyOfEnter = other.gameObject.GetComponent<Enemy>();
+            if(enemyOfEnter != null) allEnemiesNowInTrigger.Add(enemyOfEnter);
+            if(allEnemiesNowInTrigger.Count != 0) {
+                notConditions.Invoke();
+                return;
+            }
+        }
         var playerOfEnter = other.gameObject.GetComponent<Player>();
         if(playerOfEnter != null){
             if(! needAllPlayersCondition) {
@@ -46,11 +60,46 @@ public class PlayerTrigger : MonoBehaviour
             }
         }
     }
+    void OnTriggerStay(Collider other)
+    {
+        // allEnemiesNowInTrigger.RemoveAll(s => s == null);
+        // allPlayersNowInTrigger.RemoveAll(s => s == null);
+        foreach(var i in allEnemiesNowInTrigger){
+            try{
+                if(((MonoBehaviour)i).transform == null){
+                    allEnemiesNowInTrigger.Remove(i);
+                    return;
+                }
+            }
+            catch (Exception e)
+            {
+                allEnemiesNowInTrigger.Remove(i);
+                return;
+            }
+        }
+        foreach(var i in allPlayersNowInTrigger){
+            try{
+                if(((MonoBehaviour)i).transform == null){
+                    allPlayersNowInTrigger.Remove(i);
+                    return;
+                }
+            }
+            catch (Exception e)
+            {
+                allPlayersNowInTrigger.Remove(i);
+                return;
+            }
+        }
+    }
     void OnTriggerExit(Collider other)
     {
         var exitPl = other.gameObject.GetComponent<Player>();
+        if(enemyStopCondition){
+            var enemyOfExit = other.gameObject.GetComponent<Enemy>();
+            if(enemyOfExit != null) allEnemiesNowInTrigger.Remove(enemyOfExit);
+        }
         if(exitPl != null){
-            if(! needAllPlayersCondition) {
+            if(! needAllPlayersCondition  ||  ((allEnemiesNowInTrigger.Count == 0) || (! enemyStopCondition))) {
                 notConditions.Invoke();
                 return;
             }
