@@ -19,14 +19,14 @@
     -setting loose target
     -get target by shoot
     -effects
-won defeat logic and triggers 
-resurrect angela
+-won defeat logic and triggers 
+-resurrect angela
 Regisseur - enemy spawner, scenes player
 some effects
 missions points
-    logic operator
-    capture point
-    payload
+    -logic operator
+    -capture point
+    -payload
     item collecting
     is all enemy dead
 infinity level - waves of enemy's
@@ -34,7 +34,7 @@ waves mission syst + missions
 simple boss enemy
 bossFight syst
 example of all missions
-heros upgrade get ability syst
+heros upgrade get ability syst*
 create story missions by comics 
 main menu
 network co-op
