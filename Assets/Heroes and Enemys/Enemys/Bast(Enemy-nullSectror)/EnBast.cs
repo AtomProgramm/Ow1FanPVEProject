@@ -147,16 +147,18 @@ public class EnBast : MonoBehaviour, Enemy
 
     public void regSelfSummon()
     {
+        if(EnemyStateObserver.instances != null){
         foreach(var i in EnemyStateObserver.instances){
             i.allEnemy.Add(gameObject);
-        }
+        }}
     }
 
     public void regSelfDel()
     {
+        if(EnemyStateObserver.instances != null){
         foreach(var i in EnemyStateObserver.instances){
             i.allEnemy.Remove(gameObject);
-        }
+        }}
     }
 
     // public Vector3 getSize()

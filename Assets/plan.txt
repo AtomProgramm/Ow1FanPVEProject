@@ -22,13 +22,13 @@
 -won defeat logic and triggers 
 -resurrect angela
 -Regisseur - enemy spawner, scenes player
-missions points
+-missions points
     -logic operator
     -capture point
     -payload
     -item collecting
     -hostage
-    is all enemy dead
+    ~is all enemy dead (big problem of architecture)
 infinity level - waves of enemy's
 waves mission syst + missions
 simple boss enemy

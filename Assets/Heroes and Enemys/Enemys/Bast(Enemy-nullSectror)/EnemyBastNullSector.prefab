@@ -670,7 +670,7 @@ MonoBehaviour:
   momentumForgetTheTarget: 0
   haveTimeToForget: 1
   timeToForget: 2
-  prefabOfBullet: {fileID: 2080408340283648546, guid: b4188efbc45af384995f1dd89c4fabce, type: 3}
+  prefabOfBullet: {fileID: 5910790463083888499, guid: 98cd9590f4317424097ed6ba3208a2cf, type: 3}
   pointToSpawnBullet: {fileID: 6314651423584573726}
   timeBetweenShoot: 0.1
   maxHealth: 200
