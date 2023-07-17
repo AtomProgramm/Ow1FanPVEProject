@@ -29,6 +29,12 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
+        #if UNITY_EDITOR
+            OnInspectorUpdate();
+            if(!Application.isPlaying ){
+                return;
+            }
+        #endif
         if(!loopSpawnList){
             if(indexNowStep >= spawnSteps.Count){
                 doIndependent = false;
@@ -41,14 +47,6 @@ public class EnemySpawner : MonoBehaviour
                 SpawnNowStepAndForceStartNewStep();
             } 
         }
-
-
-        
-
-        #if UNITY_EDITOR
-            OnInspectorUpdate();
-        #endif
-        
     }
 
     private void spawnOneContainer(OneTypeContainer toSpawn, List<EnemySpawnPoint> points){
