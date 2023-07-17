@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class EnemySpawner : MonoBehaviour
 {
     public float difficultyNow = 0;
@@ -13,6 +14,11 @@ public class EnemySpawner : MonoBehaviour
     public int indexNowStep = 0;
     public bool loopSpawnList = false;
     public List<StepSpawn> spawnSteps;
+
+    #if UNITY_EDITOR
+        [Space(5)]
+        public Color colorToPoint = Color.blue;
+    #endif
 
 
 
@@ -35,6 +41,13 @@ public class EnemySpawner : MonoBehaviour
                 SpawnNowStepAndForceStartNewStep();
             } 
         }
+
+
+        
+
+        #if UNITY_EDITOR
+            OnInspectorUpdate();
+        #endif
         
     }
 
@@ -104,5 +117,13 @@ public class EnemySpawner : MonoBehaviour
 
 
 
-    // editor interface (show to points coupling)
+    #if UNITY_EDITOR
+        private void OnInspectorUpdate() {
+            foreach(var st in spawnSteps){
+                foreach(var p in st.points){
+                    Debug.DrawLine(transform.position, p.transform.position, colorToPoint);
+                }   
+            }
+        }
+    #endif
 }
