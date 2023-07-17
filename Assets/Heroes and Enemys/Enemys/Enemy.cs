@@ -8,4 +8,5 @@ public interface Enemy
     public void playDead();
     public void tookDamage(float damageSize, HeroBehaviors fromWho = null);
     public void tookHeal(float healSize);
+    // public Vector3 getSize();
 }

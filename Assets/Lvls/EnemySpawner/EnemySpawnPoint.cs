@@ -95,33 +95,33 @@ public class EnemySpawnPoint : MonoBehaviour
         }
         return null;
     }
-    // public List<Vector3> tryGetNearPhysicsPositionsToSpawn(Vector3 pointToCheckStart, Vector3 toSize, int times = 1, int attemptsCount = 10){
-    //     var r = new List<Vector3>();
-    //     if(isPointPhysicsPossible(pointToCheckStart, toSize)){
-    //         r.Add(pointToCheckStart);
-    //         times = times - 1;
-    //     }
-    //     Vector3 pointToCheck = pointToCheckStart;
-    //     int attemptsCounter = attemptsCount;
-    //     int nowSquareSize = 1;
-    //     int xCycleCounter = 0;
-    //     while((attemptsCounter > 0) && (times > 0)){
-    //         int xM = (attemptsCounter % (nowSquareSize * 2)) - nowSquareSize;
-    //         if(xM == 0) xCycleCounter = xCycleCounter + 1;
-    //         int yM = (xCycleCounter % (nowSquareSize * 2)) - nowSquareSize;
-    //         pointToCheck = new Vector3(pointToCheckStart.x + (toSize.x * xM), pointToCheckStart.y, pointToCheckStart.z + (toSize.z * yM));
+    public List<Vector3> tryGetNearPhysicsPositionsToSpawn(Vector3 pointToCheckStart, Vector3 toSize, int times = 1, int attemptsCount = 10){
+        var r = new List<Vector3>();
+        if(isPointPhysicsPossible(pointToCheckStart, toSize)){
+            r.Add(pointToCheckStart);
+            times = times - 1;
+        }
+        Vector3 pointToCheck = pointToCheckStart;
+        int attemptsCounter = attemptsCount;
+        int nowSquareSize = 1;
+        int xCycleCounter = 0;
+        while((attemptsCounter > 0) && (times > 0)){
+            int xM = (attemptsCounter % (nowSquareSize * 2)) - nowSquareSize;
+            if(xM == 0) xCycleCounter = xCycleCounter + 1;
+            int yM = (xCycleCounter % (nowSquareSize * 2)) - nowSquareSize;
+            pointToCheck = new Vector3(pointToCheckStart.x + (toSize.x * xM), pointToCheckStart.y, pointToCheckStart.z + (toSize.z * yM));
 
-    //         if(isPointPhysicsPossible(pointToCheck, toSize)){
-    //             r.Add(pointToCheckStart);
-    //             times = times - 1;
-    //         }else{
-    //             attemptsCounter = attemptsCounter - 1;
-    //         }
+            if(isPointPhysicsPossible(pointToCheck, toSize)){
+                r.Add(pointToCheckStart);
+                times = times - 1;
+            }else{
+                attemptsCounter = attemptsCounter - 1;
+            }
 
-    //         if(yM == 0) nowSquareSize = nowSquareSize + 1;
-    //     }
-    //     return null;
-    // }
+            if(yM == 0) nowSquareSize = nowSquareSize + 1;
+        }
+        return r;
+    }
 
 
 
@@ -157,6 +157,31 @@ public class EnemySpawnPoint : MonoBehaviour
 
         Instantiate(prefabOfEnemy,(Vector3)pointToSpawnNow,facingToSpawnNow);
         return true;
+    }
+    public int trySpawnSomeEnemy(GameObject prefabOfEnemy, int count){
+        List<Vector3> pointsToSpawnNow = tryGetNearPhysicsPositionsToSpawn(transform.position, Vector3.one, count);
+        int countBadPoints = 0;
+        Quaternion facingToSpawnNow = transform.rotation;
+        foreach(var p in pointsToSpawnNow){
+            if(spawnOnlyOutOfSight){
+                if(isPlayersSeePoint()){
+                    countBadPoints = countBadPoints + 1;
+                    continue;
+                }
+            }
+            if(spawnFacingToNearsPlayer){
+                var playersTmp = MissionController.instance.playersOnMission;
+                playersTmp.Sort((a, b) => Vector3.Distance(a.transform.position, p).CompareTo(Vector3.Distance(b.transform.position, p)));
+                facingToSpawnNow.SetLookRotation(playersTmp[0].transform.position, p);
+            }
+            if(!tryNearSpawn){
+                Instantiate(prefabOfEnemy, transform.position, facingToSpawnNow);
+            }else{
+                Instantiate(prefabOfEnemy, p, facingToSpawnNow);
+            }
+
+        }
+        return pointsToSpawnNow.Count - countBadPoints;
     }
     public void forceSpawnEnemy(GameObject prefabOfEnemy){
         Quaternion facingToSpawnNow = transform.rotation;

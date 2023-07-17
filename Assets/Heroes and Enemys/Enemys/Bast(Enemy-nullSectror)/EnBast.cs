@@ -142,4 +142,9 @@ public class EnBast : MonoBehaviour, Enemy
         Destroy(Instantiate(deadEffect,transform.position,transform.rotation), 4);
         Destroy(gameObject);
     }
+
+    // public Vector3 getSize()
+    // {
+    //     return 
+    // }
 }
