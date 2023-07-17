@@ -32,12 +32,7 @@ public class EnemySpawner : MonoBehaviour
         if(doIndependent){
             nowTimer = nowTimer - Time.deltaTime;
             if(nowTimer < 0){
-                foreach(var typeInStep in spawnSteps[indexNowStep].types){
-                    spawnOneContainer(typeInStep, spawnSteps[indexNowStep].points);
-                }
-                indexNowStep  = indexNowStep - 1;
-                indexNowStep = indexNowStep % spawnSteps.Count;
-                nowTimer = spawnSteps[indexNowStep].timerBefore;
+                SpawnNowStepAndForceStartNewStep();
             } 
         }
         
@@ -48,7 +43,7 @@ public class EnemySpawner : MonoBehaviour
         canSpawn = canSpawn && (toSpawn.minDifficulty < difficultyNow);
         canSpawn = canSpawn && ((toSpawn.maxDifficulty < 0) || (toSpawn.maxDifficulty > difficultyNow));
         if(canSpawn){
-            int rCountToSpawn = toSpawn.countToSpawn + (Mathf.RoundToInt(toSpawn.addCountPerOneDifficulty * difficultyNow));
+            int rCountToSpawn = toSpawn.countToSpawn + (Mathf.RoundToInt(toSpawn.addCountPerOneDifficulty * Mathf.Max(0, (difficultyNow - toSpawn.minDifficulty))));
             foreach(var p in points){
                 if(rCountToSpawn <= 0){
                     break;
@@ -85,9 +80,29 @@ public class EnemySpawner : MonoBehaviour
 
 
 
-    // startIndependent
-    // onlySpawnNowStep
-    // forceStartNewStep
-    // SpawnNowStepAndForceStartNewStep
-    // increaseDifficultly
+    public void startIndependent(){
+        doIndependent = true;
+    }
+    public void onlySpawnNowStep(){
+        foreach(var typeInStep in spawnSteps[indexNowStep].types){
+            spawnOneContainer(typeInStep, spawnSteps[indexNowStep].points);
+        }
+    }
+    public void forceStartNewStep(){
+        indexNowStep  = indexNowStep + 1;
+        indexNowStep = indexNowStep % spawnSteps.Count;
+        nowTimer = spawnSteps[indexNowStep].timerBefore;
+    }
+    public void SpawnNowStepAndForceStartNewStep(){
+        onlySpawnNowStep();
+        forceStartNewStep();
+    }
+
+    public void increaseDifficultly(float toAdd = 1){
+        difficultyNow  = difficultyNow + toAdd;
+    }
+
+
+
+    // editor interface (show to points coupling)
 }
