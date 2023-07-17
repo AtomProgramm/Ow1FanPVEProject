@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// [RequireComponent(typeof(HostageGrabController))] do't need on chaild
 public class Player : MonoBehaviour
 {
     public HeroBehaviors hero; 
