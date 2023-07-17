@@ -21,13 +21,14 @@
     -effects
 -won defeat logic and triggers 
 -resurrect angela
-Regisseur - enemy spawner, scenes player
-some effects
+-Regisseur - enemy spawner, scenes player
 missions points
     -logic operator
     -capture point
     -payload
     item collecting
+    hostage
+    DefenseObject
     is all enemy dead
 infinity level - waves of enemy's
 waves mission syst + missions
