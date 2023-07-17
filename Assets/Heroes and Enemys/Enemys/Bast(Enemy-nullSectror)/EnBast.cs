@@ -45,6 +45,7 @@ public class EnBast : MonoBehaviour, Enemy
 
         // MissionController.instance.enemyOnMission.Add(this);
         timerToForget = timeToForget;
+        regSelfSummon();
     }
 
     void FixedUpdate()
@@ -139,8 +140,23 @@ public class EnBast : MonoBehaviour, Enemy
 
     public void playDead()
     {
+        regSelfDel();
         Destroy(Instantiate(deadEffect,transform.position,transform.rotation), 4);
         Destroy(gameObject);
+    }
+
+    public void regSelfSummon()
+    {
+        foreach(var i in EnemyStateObserver.instances){
+            i.allEnemy.Add(gameObject);
+        }
+    }
+
+    public void regSelfDel()
+    {
+        foreach(var i in EnemyStateObserver.instances){
+            i.allEnemy.Remove(gameObject);
+        }
     }
 
     // public Vector3 getSize()

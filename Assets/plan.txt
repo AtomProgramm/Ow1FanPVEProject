@@ -27,8 +27,7 @@ missions points
     -capture point
     -payload
     -item collecting
-    hostage
-    DefenseObject
+    -hostage
     is all enemy dead
 infinity level - waves of enemy's
 waves mission syst + missions
