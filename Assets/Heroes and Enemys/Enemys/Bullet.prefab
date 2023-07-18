@@ -111,4 +111,4 @@ MonoBehaviour:
   destroySelfAfterHit: 1
   sizeOfDamage: 2
   speed: 25
-  maxTimeAlive: 900
+  maxTimeAlive: 180

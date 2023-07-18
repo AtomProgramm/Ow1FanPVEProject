@@ -29,17 +29,27 @@
     -item collecting
     -hostage
     ~is all enemy dead (big problem of architecture)
-infinity level - waves of enemy's
-waves mission syst + missions
-simple boss enemy
-bossFight syst
-example of all missions
-heros upgrade get ability syst*
-create story missions by comics 
-main menu
+infinity waves mission + score/menu systems 
+example of all missions (clean enemy, item collecting, point capture ...)
+contentFilling
+    fix and polishing enemy bastion
+    impl one shot nullSector bot
+    impl nullSector heave railGun bot
+    impl nullSector prowlingBloodhound bot
+    impl D.va 
+    impl Baptiste
+    impl Mccree
+    impl Zarya
+    impl Pharah
+    impl Moira
+    impl Genji
+    impl Reaper
+create story missions by comics and other
+    build by comics new blood # 5/5 
+    build mission from ov1 - Retribution 
 network co-op
+progression system (to wave mission, get new ability's to heroes)
 effects and polishing
-
 
 
 

@@ -7,6 +7,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public float difficultyNow = 0;
+    public bool randomOrderOfPointsSpawn = true;
 
     [Header("Independent spawn")]
     public bool doIndependent = true; 
@@ -95,6 +96,17 @@ public class EnemySpawner : MonoBehaviour
         doIndependent = true;
     }
     public void onlySpawnNowStep(){
+        if(randomOrderOfPointsSpawn){
+            var count = spawnSteps[indexNowStep].points.Count;
+            var last = count - 1;
+            for (var i = 0; i < last; ++i)
+            {
+                var r = UnityEngine.Random.Range(i, count);
+                var tmp = spawnSteps[indexNowStep].points[i];
+                spawnSteps[indexNowStep].points[i] = spawnSteps[indexNowStep].points[r];
+                spawnSteps[indexNowStep].points[r] = tmp;
+            }
+        }
         foreach(var typeInStep in spawnSteps[indexNowStep].types){
             spawnOneContainer(typeInStep, spawnSteps[indexNowStep].points);
         }
