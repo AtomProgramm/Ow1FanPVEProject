@@ -64,7 +64,7 @@ public class ResurrectAngelaAbility : Ability
                 nowPlayerToResurrect.FPSController.enabled = true; 
                 rplRenderer.material.color = endColor;
 
-                nowPlayerToResurrect.hero.hp = nowPlayerToResurrect.hero.maxHealth; 
+                nowPlayerToResurrect.hp = nowPlayerToResurrect.hero.maxHealth; 
                 nowPlayerToResurrect.injured = false;
             }
             StartCoroutine(recurAnim());

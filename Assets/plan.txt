@@ -29,7 +29,7 @@
     -item collecting
     -hostage
     ~is all enemy dead (big problem of architecture)
-infinity waves mission + score/menu systems 
+infinity waves mission + score/menu systems
 example of all missions (clean enemy, item collecting, point capture ...)
 contentFilling
     fix and polishing enemy bastion

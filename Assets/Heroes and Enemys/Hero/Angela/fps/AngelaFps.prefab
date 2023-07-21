@@ -694,13 +694,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38cfab036052e9d43b55eaea16ba9245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHp: 0
+  hp: 0
+  injured: 0
+  maxHp: 0
   hero: {fileID: 7493786291927681758}
   damageModifier: 1
-  uiCanvas: {fileID: 0}
-  FPSController: {fileID: 0}
+  FPSController: {fileID: 4631193675569988167}
+  uiHealth: {fileID: 4385618654669357108}
+  uiCanvas: {fileID: 4631193674040936530}
   plDefeat: {fileID: 6717933115040325482}
   plVictory: {fileID: 5167022149040426104}
-  injured: 0
 --- !u!114 &7493786291927681758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -716,19 +720,18 @@ MonoBehaviour:
   itPlayable: 1
   size: {x: 0.9, y: 0.9, z: 0.9}
   speed: 5
-  gunPrefab:
+  gunsObjects:
   - {fileID: 3481961669014259962}
   - {fileID: 4344188694430758604}
   nowWeaponIndex: 0
   ultimate: {fileID: 1246966945591167573}
-  abilityA: {fileID: 5736606929154546876}
+  abilityA: {fileID: 0}
   abilityB: {fileID: 2941055052350095345}
   abilityC: {fileID: 7444446457412884987}
-  abilityD: {fileID: 0}
-  uiOf: {fileID: 4385618654669357108}
+  passiveAbilities:
+  - {fileID: 5736606929154546876}
   uiOfGuns: {fileID: 8118451505634984611}
   maxHealth: 200
-  hp: 200
 --- !u!114 &7444446457412884987
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnBast : MonoBehaviour, Enemy
+public class EnBast : Enemy
 {
     [Space(5)]
     public float canSeeRange = 200;
@@ -23,7 +23,6 @@ public class EnBast : MonoBehaviour, Enemy
     private float timerBetweenShoot = -1;
     [Space(5)]
     public float maxHealth = 100;
-    public float health = 100;
     [Space(5)]
     public GameObject deadEffect;
     public GameObject shootEffect;
@@ -50,6 +49,7 @@ public class EnBast : MonoBehaviour, Enemy
 
     void FixedUpdate()
     {
+        initOnStart();
         var tmpTarget = getTarget();
         if((tmpTarget == null) && (nowTarget != null)){
             if(momentumForgetTheTarget){
@@ -98,20 +98,6 @@ public class EnBast : MonoBehaviour, Enemy
         timerBetweenShoot = timerBetweenShoot - Time.deltaTime;
     }
 
-    public void tookDamage(float damageSize, HeroBehaviors fromWho = null){
-        if(getToTargetWhoHit && (fromWho != null)){
-            nowTarget = fromWho.transform;
-        }
-        health = health - damageSize;
-        // nowAnimator.SetBool("tookDamage", false);
-        if(health < 0){
-            playDead();
-        }
-    }
-    public void tookHeal(float healSize){
-        health = Math.Min(maxHealth ,health + healSize);
-    }
-
     Transform getTarget(){
         var tmpCan = MissionController.instance.playersOnMission.FindAll(item => (Vector3.Angle((item.transform.position - transform.position), transform.forward) < seeAngle));
         tmpCan.Sort((it1, it2)=>Vector3.Distance(it1.transform.position, transform.position).CompareTo(Vector3.Distance(it2.transform.position, transform.position)));
@@ -138,14 +124,14 @@ public class EnBast : MonoBehaviour, Enemy
         return null;
     }
 
-    public void playDead()
+    public override void playInjure()
     {
         regSelfDel();
         Destroy(Instantiate(deadEffect,transform.position,transform.rotation), 4);
         Destroy(gameObject);
     }
 
-    public void regSelfSummon()
+    public override void regSelfSummon()
     {
         if(EnemyStateObserver.instances != null){
         foreach(var i in EnemyStateObserver.instances){
@@ -153,7 +139,7 @@ public class EnBast : MonoBehaviour, Enemy
         }}
     }
 
-    public void regSelfDel()
+    public override void regSelfDel()
     {
         if(EnemyStateObserver.instances != null){
         foreach(var i in EnemyStateObserver.instances){
@@ -161,8 +147,24 @@ public class EnBast : MonoBehaviour, Enemy
         }}
     }
 
-    // public Vector3 getSize()
-    // {
-    //     return 
-    // }
+
+
+    public override void initOnStart(){
+        maxHp = maxHealth;
+    }
+
+    public override float calculateTheAmountOfDamage(float damageIn)
+    {
+        return damageIn;
+    }
+
+    public override void playEffectsOnDamage(float damageIn){}
+
+
+    public override float calculateTheAmountOfHeal(float healIn)
+    {
+        return healIn;
+    }
+    public override void playEffectsOnHeal(float healIn){}
+    
 }

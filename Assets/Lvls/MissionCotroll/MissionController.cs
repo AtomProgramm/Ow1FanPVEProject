@@ -14,7 +14,6 @@ public class MissionController : MonoBehaviour
     [Space(5)]
     public List<Player> playersOnMission = new List<Player>();
     public List<Enemy> enemyOnMission = new List<Enemy>(); //tmp?
-    public GameObject enemySpawner; // tmp
 
 
     void Start(){ 
@@ -22,7 +21,6 @@ public class MissionController : MonoBehaviour
         for(int ind=0; ind < playersPrefabs.Count; ind = ind + 1){
             playersOnMission.Add(Instantiate(playersPrefabs[ind],playersStartPositions[ind].transform.position, playersStartPositions[ind].transform.rotation).GetComponent<Player>());
         }
-    
     }
     void Update(){
         var isNowDefeat = false;

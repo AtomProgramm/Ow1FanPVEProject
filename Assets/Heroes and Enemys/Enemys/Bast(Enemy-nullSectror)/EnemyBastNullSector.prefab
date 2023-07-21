@@ -662,6 +662,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 745b2ef797bd81a44af0cac93605374b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHp: 200
+  hp: 200
+  injured: 0
   canSeeRange: 500
   seeAngle: 360
   shootingRange: 200
@@ -674,7 +677,6 @@ MonoBehaviour:
   pointToSpawnBullet: {fileID: 6314651423584573726}
   timeBetweenShoot: 0.1
   maxHealth: 200
-  health: 200
   deadEffect: {fileID: 6122816319762520373, guid: f4af593bb33aa9b40b61d2b6ee3a393b, type: 3}
   shootEffect: {fileID: 6222015178722274089, guid: 54b9640fe73feba4fa1ddfbf84dee8db, type: 3}
 --- !u!136 &3347188429929985126

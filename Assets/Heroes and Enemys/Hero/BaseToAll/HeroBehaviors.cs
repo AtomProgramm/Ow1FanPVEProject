@@ -10,52 +10,38 @@ public class HeroBehaviors : MonoBehaviour
     public Boolean itPlayable;
 
 
-
     [Space(20)]
     public Vector3 size;
-
-    
-    [Space(20)]
     public float speed;
 
 
     
     [Space(20)]
-    public List<GameObject> gunPrefab;
+    public List<GameObject> gunsObjects;
     public List<Gun> scriptOfGunPrefab;
     public int nowWeaponIndex;
 
 
     [Space(20)]
     public UltimateAbility ultimate;
-    [Space(8)]
     public Ability abilityA;
-    [Space(5)]
     public Ability abilityB;
-    [Space(5)]
     public Ability abilityC;
-    [Space(5)]
-    public Ability abilityD;
+    public List<Ability> passiveAbilities;
 
 
     [Space(20)]
-    public UIHeroState uiOf;
     public UIGuns uiOfGuns;
 
 
     [Space(20)]
     public float maxHealth;
-    public float hp;
 
 
 
-
-    void Start()  { 
-        hp = maxHealth;
-    }
+    void Start() {}
     void Update() { 
         if(itPlayable){
-            uiOf.setHealth(hp, maxHealth);
             if(Input.GetAxis("Mouse ScrollWheel") > 0){
                 nowWeaponIndex = nowWeaponIndex + 1;
                 changeWeapon();
@@ -67,10 +53,10 @@ public class HeroBehaviors : MonoBehaviour
     }
 
     void changeWeapon(){
-        foreach(var i in gunPrefab){
+        foreach(var i in gunsObjects){
             i.SetActive(false);
         }
-        gunPrefab[Math.Abs(nowWeaponIndex) % gunPrefab.Count].SetActive(true);
+        gunsObjects[Math.Abs(nowWeaponIndex) % gunsObjects.Count].SetActive(true);
         uiOfGuns.setNowGun(Math.Abs(nowWeaponIndex));
     }
 

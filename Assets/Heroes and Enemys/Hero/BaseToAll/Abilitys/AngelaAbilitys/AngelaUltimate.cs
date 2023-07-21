@@ -46,7 +46,7 @@ public class AngelaUltimate : UltimateAbility
         if(timerToUlt <= 0){
             timerToUlt = timeToUlt;
             heroB.scriptOfGunPrefab = new List<Gun>();
-            foreach(GameObject g in heroB.gunPrefab){
+            foreach(GameObject g in heroB.gunsObjects){
                 // heroB.scriptOfGunPrefab.Add(g.GetComponent<Gun>());
                 heroB.scriptOfGunPrefab.Add(g.GetComponentInChildren<Gun>());
             } 

@@ -6,42 +6,46 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 // [RequireComponent(typeof(HostageGrabController))] do't need on chaild
-public class Player : MonoBehaviour
+public class Player : HittableEntity
 {
+
+    // not work :(
+        // [HideInInspector]
+        // public new float maxHp = 200; // override only to hide in inspector
+    [Space(5)]
     public HeroBehaviors hero; 
-    public float damageModifier = 1f;
-    public Canvas uiCanvas;
-    public FirstPersonController FPSController = null;
 
     [Space(5)]
+    public float damageModifier = 1f;
+    public FirstPersonController FPSController = null;
+
+
+    [Header("UI")]
+    public UIHeroState uiHealth; // *uiOf*? tmp only hp bar
+    public Canvas uiCanvas;
+    // [Header("UI animation")]
     public CanvasFrameAnimation plDefeat;
     public CanvasFrameAnimation plVictory;
-    [Space(5)]
-    public bool injured;
+
+
+
+
 
     void Start()
     {
+        initOnStart();
         FPSController = GetComponent<FirstPersonController>();
         uiCanvas = GetComponentInChildren<Canvas>();
-        //Tmp
         // if(MissionController.instance.playersOnMission == null)MissionController.instance.playersOnMission = new List<Player>();
         // if(!MissionController.instance.playersOnMission.Contains(this)) MissionController.instance.playersOnMission.Add(this);
     }
-
-    void Update(){}
-
-
-    public void tookDamage(float damageSize){
-        hero.hp = hero.hp - damageSize;
-        // nowAnimator.SetBool("tookDamage", false);
-        if(hero.hp < 0){
-            playInjure();
-        }
-
+    void Update() {
+        uiHealth.setHealth(hp, maxHp);    
     }
-    public void tookHeal(float healSize){
-        hero.hp = Math.Min(hero.maxHealth ,hero.hp + healSize);
-    }
+
+
+
+
 
     public void playWon(){
         void won(){
@@ -59,7 +63,36 @@ public class Player : MonoBehaviour
         plDefeat.doOnEndAnimation += defeat;  
         plDefeat.tryStartAnimation();
     }
-    public void playInjure(){ 
+
+
+
+
+
+    public override void initOnStart()
+    {
+        hp = hero.maxHealth;
+        maxHp = hero.maxHealth;
+    }
+
+    public override float calculateTheAmountOfDamage(float damageIn)
+    {
+        return damageIn;
+    }
+
+    public override void playEffectsOnDamage(float damageIn) {}
+
+
+
+
+    public override float calculateTheAmountOfHeal(float healIn)
+    {
+        return healIn;
+    }
+
+    public override void playEffectsOnHeal(float healIn){}
+
+    public override void playInjure()
+    {
         injured = true;
         FPSController.enabled = false;
     }

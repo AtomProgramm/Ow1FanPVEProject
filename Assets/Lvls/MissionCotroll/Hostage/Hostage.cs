@@ -5,10 +5,10 @@ using UnityEngine.Events;
 
 [ExecuteInEditMode]
 [RequireComponent(typeof(Collider))]
-public class Hostage : Player
+public class Hostage : HittableEntity
 {
-    [Header("Main")]
-    public float maxHp = 200;
+    // [Header("Main")]
+    // public new float maxHp = 200;
     [Header("Effect")]
     public float newSpeed;
     [Header("Actions")]
@@ -22,9 +22,6 @@ public class Hostage : Player
         public Color colorEventUnGrab = Color.green;
         public Color colorEventInjure = Color.green;
     #endif
-
-
-    private float hp;
 
 
     void Start(){}
@@ -74,24 +71,27 @@ public class Hostage : Player
     }
 
 
-
-    public new void tookDamage(float damageSize){
-        hp = hp - damageSize;
-        if(hp < 0){
-            playInjure();
-        }
-
-    }
-    public new void tookHeal(float healSize){
-        hp = Mathf.Min(hero.maxHealth ,hp + healSize);
-    }
-
-    public new void playInjure(){ 
+    public override void playInjure(){ 
         injured = true;
         OnInjured.Invoke();
     }
-    public new void playWon(){}
-    public new void playDefeat(){}
+
+    public override void initOnStart(){}
+
+    public override float calculateTheAmountOfDamage(float damageIn)
+    {
+        return damageIn;
+    }
+
+    public override void playEffectsOnDamage(float damageIn){}
+
+    public override float calculateTheAmountOfHeal(float healIn)
+    {
+        return healIn;
+    }
+
+    public override void playEffectsOnHeal(float healIn)
+    {}
 
 
     #if UNITY_EDITOR
@@ -116,5 +116,6 @@ public class Hostage : Player
                 Debug.DrawLine(transform.position, ((MonoBehaviour)nowTarget).transform.position, colorEventInjure);
             }    
         }
+
     #endif
 }
