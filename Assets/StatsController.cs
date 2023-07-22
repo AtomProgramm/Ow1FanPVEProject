@@ -23,16 +23,15 @@ public class StatsController : MonoBehaviour
     public List<Sprite> lastMatchHeroesOfCommands;
 
 
+    void Awake()
+    {
+        inst = this;
+    }
 
     void Start(){
         inst = this;
         loadValues();
     }
-    // void Update(){
-    //     if(MissionController.instance != null){
-
-    //     }
-    // }
 
 
 
@@ -77,6 +76,7 @@ public class StatsController : MonoBehaviour
         lastMatchDamage = 0;
         lastMatchResultOfMatch = 0;
         lastMatchWaves = 0;
+        saveValues();
     }
     public void countNewWave(){
         lastMatchWaves = lastMatchWaves + 1;

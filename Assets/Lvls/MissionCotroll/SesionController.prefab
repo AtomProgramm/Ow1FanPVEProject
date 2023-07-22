@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4129969409496631299}
+  - component: {fileID: 2108573691018607631}
   - component: {fileID: 4129969409496631298}
   - component: {fileID: 117429650}
   m_Layer: 0
@@ -32,6 +33,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2108573691018607631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4129969409496631297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c340c72f235f5674fa8a9a480d47565e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalScorePoints: 0
+  lastMatchScore: 0
+  lastMatchTime: 0
+  lastMatchKills: 0
+  lastMatchDeath: 0
+  lastMatchHits: 0
+  lastMatchShoots: 0
+  lastMatchDamage: 0
+  lastMatchResultOfMatch: 0
+  lastMatchWaves: 0
+  lastMatchHeroOf: {fileID: 0}
+  lastMatchHeroesOfCommands: []
 --- !u!114 &4129969409496631298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51,7 +76,7 @@ MonoBehaviour:
   - {fileID: 8170697206945403369, guid: 269d449536971bd40870947d19df61ff, type: 3}
   - {fileID: 2076977169614273817, guid: fb93a4e9ba845064f8d421cd2e6c13c1, type: 3}
   playersOnMission: []
-  enemySpawner: {fileID: 0}
+  enemyOnMission: []
 --- !u!114 &117429650
 MonoBehaviour:
   m_ObjectHideFlags: 0
