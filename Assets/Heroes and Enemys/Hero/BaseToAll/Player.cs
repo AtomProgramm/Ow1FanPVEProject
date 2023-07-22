@@ -5,7 +5,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-// [RequireComponent(typeof(HostageGrabController))] do't need on chaild
+[RequireComponent(typeof(HostageGrabController))] 
+[RequireComponent(typeof(Collider))] 
 public class Player : HittableEntity
 {
 
@@ -50,7 +51,7 @@ public class Player : HittableEntity
     public void playWon(){
         void won(){
             // change scene and other...
-            SceneManager.LoadScene("TmpAlternativeScene", LoadSceneMode.Single);//tmp to test
+            SceneManager.LoadScene("MissionResult", LoadSceneMode.Single);//tmp to test
         }    
         plVictory.doOnEndAnimation += won;  
         plVictory.tryStartAnimation();
@@ -58,7 +59,7 @@ public class Player : HittableEntity
     public void playDefeat(){ 
         void defeat(){
             // change scene and other...
-            SceneManager.LoadScene("TmpAlternativeScene", LoadSceneMode.Single);//tmp to test
+            SceneManager.LoadScene("MissionResult", LoadSceneMode.Single);//tmp to test
         }  
         plDefeat.doOnEndAnimation += defeat;  
         plDefeat.tryStartAnimation();
@@ -74,12 +75,12 @@ public class Player : HittableEntity
         maxHp = hero.maxHealth;
     }
 
-    public override float calculateTheAmountOfDamage(float damageIn)
+    public override float calculateTheAmountOfDamage(damage damageIn)
     {
-        return damageIn;
+        return damageIn.damageSize;
     }
 
-    public override void playEffectsOnDamage(float damageIn) {}
+    public override void playEffectsOnDamage(damage damageIn) {}
 
 
 
@@ -93,7 +94,17 @@ public class Player : HittableEntity
 
     public override void playInjure()
     {
+        StatsController.inst.lastMatchDeath = StatsController.inst.lastMatchDeath + 1;
+        StatsController.inst.saveValues();
         injured = true;
         FPSController.enabled = false;
+    }
+
+
+    public void doPerHitEnemy(damage hitBy){
+        StatsController.inst.lastMatchHits = StatsController.inst.lastMatchHits + 1;
+        StatsController.inst.lastMatchDamage = StatsController.inst.lastMatchDamage + hitBy.damageSize;
+        StatsController.inst.saveValues();
+        hero.chargeUltimate(hero.chargeUltimatePerHit);
     }
 }

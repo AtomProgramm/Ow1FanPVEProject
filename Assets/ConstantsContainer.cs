@@ -12,9 +12,11 @@ public static class ConstantsContainer
     public const String keyLastMatchTime = "keyLastMatchTime";
     public const String keyLastMatchKills = "keyLastMatchKills";
     public const String keyLastMatchDeath = "keyLastMatchDeath";
-    public const String keyLastMatchAim = "keyLastMatchAim";
+    public const String keyLastMatchHits = "keyLastMatchHits";
+    public const String keyLastMatchShoots = "keyLastMatchShoots";
     public const String keyLastMatchDamage = "keyLastMatchDamage";
     public const String keyLastMatchResultOfMatch = "keyLastMatchResultOfMatch";
     public const String keyLastMatchWaves = "keyLastMatchWaves";
+    public const String keyLastMatchHeroOf = "keyLastMatchHeroOf";
 
 }

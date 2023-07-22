@@ -21,6 +21,7 @@ public class MissionController : MonoBehaviour
         for(int ind=0; ind < playersPrefabs.Count; ind = ind + 1){
             playersOnMission.Add(Instantiate(playersPrefabs[ind],playersStartPositions[ind].transform.position, playersStartPositions[ind].transform.rotation).GetComponent<Player>());
         }
+        StatsController.inst.nullValues();
     }
     void Update(){
         var isNowDefeat = false;
@@ -39,11 +40,13 @@ public class MissionController : MonoBehaviour
 
     
     public void wonMission(){
+        StatsController.inst.lastMatchResultOfMatch = 1;
         foreach(var plNow in playersOnMission){
             plNow.playWon();
         }
     }
     public void defeatMission(){
+        StatsController.inst.lastMatchResultOfMatch = -1;
         foreach(var plNow in playersOnMission){
             plNow.playDefeat();
         }

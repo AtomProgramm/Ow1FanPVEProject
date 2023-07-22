@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SimpleEnemyBullet : MonoBehaviour
 {
+    HittableEntity ownerOfBullet;
     public bool destroySelfAfterHit = true;
     public float sizeOfDamage = 1;
     public float speed = 1;
@@ -19,7 +20,10 @@ public class SimpleEnemyBullet : MonoBehaviour
         transform.position = transform.position + (transform.forward * speed * Time.deltaTime);
     }
     public void hitHeroProcess(Player pl){
-        pl.tookDamage(sizeOfDamage);
+        HittableEntity.damage damage = new HittableEntity.damage();
+        damage.damageSize = sizeOfDamage;  
+        damage.owner = ownerOfBullet;
+        pl.tookDamage(damage);
         tryDestroySelfAfterHit();
     }
     public void tryDestroySelfAfterHit(){

@@ -126,6 +126,10 @@ public class EnBast : Enemy
 
     public override void playInjure()
     {
+        if(lastBittedBy != null){
+            StatsController.inst.lastMatchKills = StatsController.inst.lastMatchKills + 1;
+            StatsController.inst.saveValues();
+        }
         regSelfDel();
         Destroy(Instantiate(deadEffect,transform.position,transform.rotation), 4);
         Destroy(gameObject);
@@ -153,12 +157,14 @@ public class EnBast : Enemy
         maxHp = maxHealth;
     }
 
-    public override float calculateTheAmountOfDamage(float damageIn)
+    public override float calculateTheAmountOfDamage(damage damageIn)
     {
-        return damageIn;
+        return damageIn.damageSize;
     }
 
-    public override void playEffectsOnDamage(float damageIn){}
+    public override void playEffectsOnDamage(damage damageIn){
+        lastBittedBy = damageIn.playerOwner;
+    }
 
 
     public override float calculateTheAmountOfHeal(float healIn)

@@ -10,7 +10,7 @@ public class ProjectileGun : MonoBehaviour, Gun
     private Camera fpsCam;
 
 
-    public HeroBehaviors ownerGun;
+    public Player ownerGun;
     public float timeBetweenShootSize;
     public float timeToReloading;
     public int amo;
@@ -31,6 +31,9 @@ public class ProjectileGun : MonoBehaviour, Gun
     {
        var tmpBulletInstance = Instantiate(bulletPrefab, positionToSpawnBullet.transform.position, positionToSpawnBullet.transform.rotation);
        tmpBulletInstance.GetComponent<Projectile>().owner = ownerGun;
+    //    ownerGun.
+        StatsController.inst.lastMatchShoots = StatsController.inst.lastMatchShoots + 1;
+        StatsController.inst.saveValues();
     }
     public void reload()
     {

@@ -30,6 +30,9 @@ public class SettingsContainer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        StatsController.inst.lastMatchTime = StatsController.inst.lastMatchTime + Time.deltaTime;
+        if((Mathf.RoundToInt(StatsController.inst.lastMatchTime / 0.5f) % 50) == 0){
+            StatsController.inst.saveValues();
+        }
     }
 }

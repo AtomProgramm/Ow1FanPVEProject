@@ -24,6 +24,7 @@ public class HeroBehaviors : MonoBehaviour
 
     [Space(20)]
     public UltimateAbility ultimate;
+    public float chargeUltimatePerHit = 1f;
     public Ability abilityA;
     public Ability abilityB;
     public Ability abilityC;

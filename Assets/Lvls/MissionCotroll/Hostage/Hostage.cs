@@ -78,12 +78,12 @@ public class Hostage : HittableEntity
 
     public override void initOnStart(){}
 
-    public override float calculateTheAmountOfDamage(float damageIn)
+    public override float calculateTheAmountOfDamage(damage damageIn)
     {
-        return damageIn;
+        return damageIn.damageSize;
     }
 
-    public override void playEffectsOnDamage(float damageIn){}
+    public override void playEffectsOnDamage(damage damageIn){}
 
     public override float calculateTheAmountOfHeal(float healIn)
     {

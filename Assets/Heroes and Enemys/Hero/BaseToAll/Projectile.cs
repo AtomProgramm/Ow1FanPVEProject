@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Projectile : MonoBehaviour
 {
-    public HeroBehaviors owner;
+    public Player owner;
     public bool destroySelfAfterHit = true;
     public float ultimateChargeSize = 1f;
     public float sizeOfDamage = 1;
@@ -21,9 +21,13 @@ public abstract class Projectile : MonoBehaviour
         transform.position = transform.position + (transform.forward * speed * Time.deltaTime);
     }
     public void hitEnemyProcess(Enemy enemy){
-        enemy.tookDamage(sizeOfDamage);
-        if(owner != null){
-            owner.chargeUltimate(ultimateChargeSize);
+        HittableEntity.damage damage = new HittableEntity.damage();
+        damage.damageSize = sizeOfDamage;  
+        damage.owner = owner;
+        damage.playerOwner = owner;
+        enemy.tookDamage(damage);
+        if(damage.playerOwner != null){
+            owner.doPerHitEnemy(damage);
         }
         tryDestroySelfAfterHit();
     }

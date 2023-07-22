@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 59273349}
   - component: {fileID: 59273348}
   m_Layer: 5
-  m_Name: Text (TMP) (4)
+  m_Name: de
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 231680600}
   - component: {fileID: 231680599}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: RMa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -486,7 +486,7 @@ GameObject:
   - component: {fileID: 446260638}
   - component: {fileID: 446260637}
   m_Layer: 5
-  m_Name: Text (TMP) (3)
+  m_Name: ki
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -941,7 +941,7 @@ GameObject:
   - component: {fileID: 1129271326}
   - component: {fileID: 1129271325}
   m_Layer: 5
-  m_Name: Text (TMP) (5)
+  m_Name: da
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1147,7 +1147,7 @@ GameObject:
   - component: {fileID: 1725666095}
   - component: {fileID: 1725666094}
   m_Layer: 5
-  m_Name: Text (TMP) (2)
+  m_Name: sc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1281,7 +1281,7 @@ GameObject:
   - component: {fileID: 1740125599}
   - component: {fileID: 1740125598}
   m_Layer: 5
-  m_Name: Text (TMP) (8)
+  m_Name: maT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1415,6 +1415,8 @@ GameObject:
   - component: {fileID: 1858042017}
   - component: {fileID: 1858042016}
   - component: {fileID: 1858042015}
+  - component: {fileID: 1858042020}
+  - component: {fileID: 1858042019}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1506,6 +1508,51 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1858042019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858042014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c340c72f235f5674fa8a9a480d47565e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalScorePoints: 0
+  lastMatchScore: 0
+  lastMatchTime: 0
+  lastMatchKills: 0
+  lastMatchDeath: 0
+  lastMatchHits: 0
+  lastMatchShoots: 0
+  lastMatchDamage: 0
+  lastMatchResultOfMatch: 0
+  lastMatchWaves: 0
+  lastMatchHeroOf: {fileID: 0}
+  lastMatchHeroesOfCommands: []
+--- !u!114 &1858042020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858042014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6f5550e9ef49b84dbd63b19621f6179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToTextAnimation: 1
+  resultOfMath: {fileID: 231680599}
+  matchTime: {fileID: 1740125598}
+  Death: {fileID: 59273348}
+  Damage: {fileID: 1129271325}
+  Kills: {fileID: 446260637}
+  Aim: {fileID: 2034272039}
+  Waves: {fileID: 1895108809}
+  Score: {fileID: 1725666094}
 --- !u!1 &1874786684
 GameObject:
   m_ObjectHideFlags: 0
@@ -1601,7 +1648,7 @@ GameObject:
   - component: {fileID: 1895108810}
   - component: {fileID: 1895108809}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: waves
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1735,7 +1782,7 @@ GameObject:
   - component: {fileID: 2034272040}
   - component: {fileID: 2034272039}
   m_Layer: 5
-  m_Name: Text (TMP) (6)
+  m_Name: aim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -3952,6 +3952,35 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1515586457}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1538155130 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4129969409496631297, guid: 42fb472832deb814b9791b25f223719c, type: 3}
+  m_PrefabInstance: {fileID: 4129969408442026156}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1538155134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538155130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c340c72f235f5674fa8a9a480d47565e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalScorePoints: 0
+  lastMatchScore: 0
+  lastMatchTime: 0
+  lastMatchKills: 0
+  lastMatchDeath: 0
+  lastMatchHits: 0
+  lastMatchShoots: 0
+  lastMatchDamage: 0
+  lastMatchResultOfMatch: 0
+  lastMatchWaves: 0
+  lastMatchHeroOf: {fileID: 0}
+  lastMatchHeroesOfCommands: []
 --- !u!1 &1548454839
 GameObject:
   m_ObjectHideFlags: 0

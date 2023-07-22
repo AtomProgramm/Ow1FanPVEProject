@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MenuLike/MissionResult.unity
+    guid: d420f711693479e49b5ddff32e44af19
   m_configObjects: {}

@@ -697,7 +697,6 @@ MonoBehaviour:
   maxHp: 0
   hp: 0
   injured: 0
-  maxHp: 0
   hero: {fileID: 7493786291927681758}
   damageModifier: 1
   FPSController: {fileID: 4631193675569988167}
@@ -725,6 +724,7 @@ MonoBehaviour:
   - {fileID: 4344188694430758604}
   nowWeaponIndex: 0
   ultimate: {fileID: 1246966945591167573}
+  chargeUltimatePerHit: 1
   abilityA: {fileID: 0}
   abilityB: {fileID: 2941055052350095345}
   abilityC: {fileID: 7444446457412884987}
@@ -1652,7 +1652,7 @@ PrefabInstance:
     - target: {fileID: 578255684988797738, guid: f8795666847c46b44bcdac5ef5a39e87, type: 3}
       propertyPath: ownerGun
       value: 
-      objectReference: {fileID: 7493786291927681758}
+      objectReference: {fileID: 8170697206945403369}
     - target: {fileID: 578255684988797738, guid: f8795666847c46b44bcdac5ef5a39e87, type: 3}
       propertyPath: timeToReloading
       value: 1.4
