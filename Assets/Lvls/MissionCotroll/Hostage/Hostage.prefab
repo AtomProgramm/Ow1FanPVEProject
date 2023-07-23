@@ -109,14 +109,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43a4f20747d88824ab14d88da1e385bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hero: {fileID: 0}
-  damageModifier: 1
-  uiCanvas: {fileID: 0}
-  FPSController: {fileID: 0}
-  plDefeat: {fileID: 0}
-  plVictory: {fileID: 0}
-  injured: 0
   maxHp: 200
+  hp: 0
+  injured: 0
+  typeOfHittableEntity: 2
   newSpeed: 1
   OnGrab:
     m_PersistentCalls:

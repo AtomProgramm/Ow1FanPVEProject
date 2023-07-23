@@ -31,7 +31,6 @@
     ~is all enemy dead (big problem of architecture)
 -infinity waves mission + score/menu systems
 fix projectile
-fix bastion
 example of all missions (clean enemy, item collecting, point capture ...)
 contentFilling
     fix and polishing enemy bastion

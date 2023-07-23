@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7298152074231553881}
   - component: {fileID: 4602007162129542354}
   - component: {fileID: 905604476638604389}
-  - component: {fileID: 7091915903505929491}
+  - component: {fileID: 7053861695636393956}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -96,7 +96,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7091915903505929491
+--- !u!114 &7053861695636393956
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,10 +105,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 5910790463083888499}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4feda3944c9f33d4daf51d9f94ca4a1f, type: 3}
+  m_Script: {fileID: 11500000, guid: 0c757c6656719b54ab309be6b1dc0375, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage:
+    damageSize: 5
+    owner: {fileID: 0}
+    canDamageOnly: 0
   destroySelfAfterHit: 1
-  sizeOfDamage: 2
-  speed: 25
+  ultimateChargeSize: 1
+  speed: 50
   maxTimeAlive: 180

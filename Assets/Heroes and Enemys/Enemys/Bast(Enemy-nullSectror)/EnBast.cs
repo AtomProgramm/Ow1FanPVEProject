@@ -91,7 +91,8 @@ public class EnBast : Enemy
     // bool processShooting(){
     void processShooting(){
         if(timerBetweenShoot <= 0){
-            Instantiate(prefabOfBullet, pointToSpawnBullet.transform.position, pointToSpawnBullet.transform.rotation);
+            var b = Instantiate(prefabOfBullet, pointToSpawnBullet.transform.position, pointToSpawnBullet.transform.rotation);
+            b.GetComponent<Projectile>().damage.owner = this; // todo: factory? getComponent in evry projectile is bad optimization
             Instantiate(shootEffect, pointToSpawnBullet.transform);
             timerBetweenShoot = timeBetweenShoot;
         }
@@ -111,8 +112,6 @@ public class EnBast : Enemy
                 RaycastHit  hit;
                 Vector3 dir = nowPlayer.transform.position - transform.position;
                 Vector3 from = transform.position + (Vector3.up * 0.5f);
-                // Vector3 from = transform.position + thisCollider.bounds.;
-                // Vector3 from = transform.position;
                 Debug.DrawRay(from, dir,Color.blue,2);
                 if(Physics.Raycast(from, dir, out hit)){ 
                     if (hit.transform.GetComponent<Player>() != null){
@@ -163,7 +162,7 @@ public class EnBast : Enemy
     }
 
     public override void playEffectsOnDamage(damage damageIn){
-        lastBittedBy = damageIn.playerOwner;
+        lastBittedBy = damageIn.owner;
     }
 
 

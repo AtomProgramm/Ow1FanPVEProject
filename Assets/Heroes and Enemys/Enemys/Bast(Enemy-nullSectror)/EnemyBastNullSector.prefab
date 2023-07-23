@@ -665,6 +665,8 @@ MonoBehaviour:
   maxHp: 200
   hp: 200
   injured: 0
+  typeOfHittableEntity: 1
+  lastBittedBy: {fileID: 0}
   canSeeRange: 500
   seeAngle: 360
   shootingRange: 200

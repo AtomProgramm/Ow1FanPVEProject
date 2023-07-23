@@ -27,13 +27,13 @@ public class Player : HittableEntity
     // [Header("UI animation")]
     public CanvasFrameAnimation plDefeat;
     public CanvasFrameAnimation plVictory;
-
-
+    
 
 
 
     void Start()
     {
+        typeOfHittableEntity = HittableEntity.TypeOfHittableEntity.player;
         initOnStart();
         FPSController = GetComponent<FirstPersonController>();
         uiCanvas = GetComponentInChildren<Canvas>();
@@ -93,11 +93,12 @@ public class Player : HittableEntity
     public override void playEffectsOnHeal(float healIn){}
 
     public override void playInjure()
-    {
-        StatsController.inst.lastMatchDeath = StatsController.inst.lastMatchDeath + 1;
-        StatsController.inst.saveValues();
-        injured = true;
-        FPSController.enabled = false;
+    {   if(!injured){
+            StatsController.inst.lastMatchDeath = StatsController.inst.lastMatchDeath + 1;
+            StatsController.inst.saveValues();
+            injured = true;
+            FPSController.enabled = false;
+        }
     }
 
 

@@ -9,17 +9,40 @@ public abstract class HittableEntity : MonoBehaviour
     public virtual String nameEntity{get;}  
     public virtual Sprite icon{get;set;}  
 
+
+    [Space(5)]
     public float maxHp;
     public float hp;
-    public bool injured; // ?
+    public bool injured; 
+    
+
+    [Space(5)]
+    public TypeOfHittableEntity typeOfHittableEntity;
 
 
+    [Serializable]
     public class damage{
+        [SerializeField]
         public float damageSize;
+        [SerializeField]
         public HittableEntity owner;
-        public Player playerOwner = null;
+        [SerializeField]
+        public CanDamageOnly canDamageOnly = CanDamageOnly.enemy;
+        [Serializable]
+        public enum CanDamageOnly{
+            player,
+            enemy,
+            allNotPlayerAndNotEnemy,
+            all
+        }
     }
 
+    [Serializable]
+    public enum TypeOfHittableEntity{
+        player,
+        enemy,
+        other
+    }
 
 
 

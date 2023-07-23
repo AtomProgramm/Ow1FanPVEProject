@@ -10,7 +10,7 @@ public class ProjectileGun : MonoBehaviour, Gun
     private Camera fpsCam;
 
 
-    public Player ownerGun;
+    public HittableEntity ownerGun;
     public float timeBetweenShootSize;
     public float timeToReloading;
     public int amo;
@@ -30,8 +30,7 @@ public class ProjectileGun : MonoBehaviour, Gun
     public void shoot()
     {
        var tmpBulletInstance = Instantiate(bulletPrefab, positionToSpawnBullet.transform.position, positionToSpawnBullet.transform.rotation);
-       tmpBulletInstance.GetComponent<Projectile>().owner = ownerGun;
-    //    ownerGun.
+       tmpBulletInstance.GetComponent<Projectile>().damage.owner = ownerGun; // todo: factory? getComponent in evry projectile is bad optimization
         StatsController.inst.lastMatchShoots = StatsController.inst.lastMatchShoots + 1;
         StatsController.inst.saveValues();
     }
