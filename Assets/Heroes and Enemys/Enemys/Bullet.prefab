@@ -111,8 +111,12 @@ MonoBehaviour:
   damage:
     damageSize: 5
     owner: {fileID: 0}
-    canDamageOnly: 0
+    canDamageOnly:
+      player: 1
+      enemy: 0
+      other: 0
   destroySelfAfterHit: 1
+  destroySelfAfterTimeExit: 1
   ultimateChargeSize: 1
   speed: 50
   maxTimeAlive: 180

@@ -1,18 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Projectile : MonoBehaviour
 {
     public HittableEntity.damage damage;
     public bool destroySelfAfterHit = true;
+    public bool destroySelfAfterTimeExit = true;
     public float ultimateChargeSize = 1f;
     public float speed = 1;
     public float maxTimeAlive = 60 * 3;
+    public UnityAction<Projectile> doOnHit; // Kludge to do bullets factory
     
     void Start()
     {
-        Destroy(gameObject, maxTimeAlive);
+        if(destroySelfAfterTimeExit){
+            Destroy(gameObject, maxTimeAlive);
+        }
     }
     
     void Update()
@@ -36,13 +41,11 @@ public class Projectile : MonoBehaviour
     {
         var hittableObj = other.gameObject.GetComponent<HittableEntity>();
         if(hittableObj != null){
-            if(damage.canDamageOnly == HittableEntity.damage.CanDamageOnly.all){
+            if((damage.canDamageOnly.other) && (hittableObj.typeOfHittableEntity == HittableEntity.TypeOfHittableEntity.other)){
                 hitProcess(hittableObj);
-            }else if((damage.canDamageOnly == HittableEntity.damage.CanDamageOnly.allNotPlayerAndNotEnemy) && (hittableObj.typeOfHittableEntity == HittableEntity.TypeOfHittableEntity.other)){
+            }else if((damage.canDamageOnly.enemy) && (hittableObj.typeOfHittableEntity == HittableEntity.TypeOfHittableEntity.enemy)){
                 hitProcess(hittableObj);
-            }else if((damage.canDamageOnly == HittableEntity.damage.CanDamageOnly.enemy) && (hittableObj.typeOfHittableEntity == HittableEntity.TypeOfHittableEntity.enemy)){
-                hitProcess(hittableObj);
-            }else if((damage.canDamageOnly == HittableEntity.damage.CanDamageOnly.player) && (hittableObj.typeOfHittableEntity == HittableEntity.TypeOfHittableEntity.player)){
+            }else if((damage.canDamageOnly.player) && (hittableObj.typeOfHittableEntity == HittableEntity.TypeOfHittableEntity.player)){
                 hitProcess(hittableObj);
             }
         }

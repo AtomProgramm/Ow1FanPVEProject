@@ -697,6 +697,7 @@ MonoBehaviour:
   maxHp: 0
   hp: 0
   injured: 0
+  typeOfHittableEntity: 0
   hero: {fileID: 7493786291927681758}
   damageModifier: 1
   FPSController: {fileID: 4631193675569988167}
@@ -1641,6 +1642,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5049746286379049639}
     m_Modifications:
+    - target: {fileID: -4953414271687902143, guid: f8795666847c46b44bcdac5ef5a39e87, type: 3}
+      propertyPath: maxCountInstances
+      value: 125
+      objectReference: {fileID: 0}
     - target: {fileID: 578255684988797738, guid: f8795666847c46b44bcdac5ef5a39e87, type: 3}
       propertyPath: amo
       value: 25

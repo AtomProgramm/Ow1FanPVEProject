@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(ProjectileFactory))]
 public class ProjectileGun : MonoBehaviour, Gun
 {
     
@@ -16,6 +17,7 @@ public class ProjectileGun : MonoBehaviour, Gun
     public int amo;
     public GameObject positionToSpawnBullet;
     public GameObject bulletPrefab;
+    public ProjectileFactory projectileFactory;
     public Animator animator;
     [Space(10)]
     public UIGuns uiOfGun;
@@ -29,8 +31,7 @@ public class ProjectileGun : MonoBehaviour, Gun
 
     public void shoot()
     {
-       var tmpBulletInstance = Instantiate(bulletPrefab, positionToSpawnBullet.transform.position, positionToSpawnBullet.transform.rotation);
-       tmpBulletInstance.GetComponent<Projectile>().damage.owner = ownerGun; // todo: factory? getComponent in evry projectile is bad optimization
+        projectileFactory.doInst(positionToSpawnBullet.transform.position, positionToSpawnBullet.transform.rotation);
         StatsController.inst.lastMatchShoots = StatsController.inst.lastMatchShoots + 1;
         StatsController.inst.saveValues();
     }
@@ -48,6 +49,9 @@ public class ProjectileGun : MonoBehaviour, Gun
         amoNow = amo;
         timerBetweenShoot = timeBetweenShootSize;
         fpsCam = Camera.current;
+        projectileFactory = GetComponent<ProjectileFactory>();
+        projectileFactory.bulletPrefab = bulletPrefab;
+        projectileFactory.owner = ownerGun;
     }
 
     void Update()

@@ -30,8 +30,7 @@
     -hostage
     ~is all enemy dead (big problem of architecture)
 -infinity waves mission + score/menu systems
-fix projectile
-example of all missions (clean enemy, item collecting, point capture ...)
+~fix projectile
 contentFilling
     fix and polishing enemy bastion
     impl one shot nullSector bot
@@ -48,6 +47,7 @@ contentFilling
 create story missions by comics and other
     build by comics new blood # 5/5 
     build mission from ov1 - Retribution 
+example of all missions (clean enemy, item collecting, point capture ...)
 network co-op
 progression system (to wave mission, get new ability's to heroes)
 effects and polishing

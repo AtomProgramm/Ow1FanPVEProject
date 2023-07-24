@@ -27,13 +27,15 @@ public abstract class HittableEntity : MonoBehaviour
         [SerializeField]
         public HittableEntity owner;
         [SerializeField]
-        public CanDamageOnly canDamageOnly = CanDamageOnly.enemy;
+        public CanDamageOnly canDamageOnly = new CanDamageOnly();
         [Serializable]
-        public enum CanDamageOnly{
-            player,
-            enemy,
-            allNotPlayerAndNotEnemy,
-            all
+        public class CanDamageOnly{
+            [SerializeField]
+            public bool player = false;
+            [SerializeField]
+            public bool  enemy = true;
+            [SerializeField]
+            public bool  other = false;
         }
     }
 

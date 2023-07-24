@@ -2,64 +2,85 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
+using UnityEngine.Animations.Rigging;
 
+
+[RequireComponent(typeof(ProjectileFactory))]
 public class EnBast : Enemy
 {
-    [Space(5)]
+    [Header("Choice target settings")]
     public float canSeeRange = 200;
     public float seeAngle = 360;
-    public float shootingRange;
-    public Boolean canSeeThrowWalls;
-    [Space(5)]
-    public Boolean getToTargetWhoHit;
-    public Boolean momentumForgetTheTarget;
-    public Boolean haveTimeToForget;
+    public bool canSeeThrowWalls;
+    public bool getToTargetWhoHit;
+    public bool momentumForgetTheTarget;
+    public bool haveTimeToForget;
     public float timeToForget;
-    [Space(5)]
+
+
+    [Header("Shooting system")]
+    public float shootingRange;
     public GameObject prefabOfBullet;
-    // public float sizeOfDamage;
+    public ProjectileFactory projectileFactory;
     public GameObject pointToSpawnBullet;
     public float timeBetweenShoot = 0.5f;
     private float timerBetweenShoot = -1;
-    [Space(5)]
+
+    // public MultiAimConstraint bone ;
+    public Transform boneTarget ;
+    
+    
+    [Header("maxHealth")]
     public float maxHealth = 100;
-    [Space(5)]
+    
+    
+    [Header("Effects")]
     public GameObject deadEffect;
     public GameObject shootEffect;
 
 
 
-    float timerToForget;
+
+    private float timerToForgetting;
 
     private Transform nowTarget = null;
     private UnityEngine.AI.NavMeshAgent navAgent;
     private Collider thisCollider;
     private Animator nowAnimator;
 
+
+
+
+
+
     void Start()
     {
         navAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         thisCollider = GetComponent<Collider>();
         nowAnimator = GetComponent<Animator>();
+        projectileFactory = GetComponent<ProjectileFactory>();
+        projectileFactory.bulletPrefab = prefabOfBullet;
+        projectileFactory.owner = this;
 
         // MissionController.instance.enemyOnMission.Add(this);
-        timerToForget = timeToForget;
+        timerToForgetting = timeToForget;
         regSelfSummon();
+        initOnStart();
     }
 
     void FixedUpdate()
     {
-        initOnStart();
         var tmpTarget = getTarget();
         if((tmpTarget == null) && (nowTarget != null)){
             if(momentumForgetTheTarget){
                 nowTarget = null;
             }else if(haveTimeToForget){
-                if(timerToForget < 0){
-                    timerToForget = timeToForget;
+                if(timerToForgetting < 0){
+                    timerToForgetting = timeToForget;
                     nowTarget = null;
                 }else{
-                    timerToForget = timerToForget - Time.fixedDeltaTime;
+                    timerToForgetting = timerToForgetting - Time.fixedDeltaTime;
                 }
             }
 
@@ -71,6 +92,8 @@ public class EnBast : Enemy
     void Update()
     {
         if(nowTarget != null){
+            // bone.data.sourceObjects.SetTransform(0, nowPlayer.transform);
+            boneTarget.transform.position  = nowTarget.transform.position;
             navAgent.SetDestination(nowTarget.transform.position);
             nowAnimator.SetBool("walk", true);
             navAgent.isStopped = false;
@@ -87,18 +110,17 @@ public class EnBast : Enemy
             navAgent.isStopped = true;
         }
     }
-
-    // bool processShooting(){
     void processShooting(){
         if(timerBetweenShoot <= 0){
-            var b = Instantiate(prefabOfBullet, pointToSpawnBullet.transform.position, pointToSpawnBullet.transform.rotation);
-            b.GetComponent<Projectile>().damage.owner = this; // todo: factory? getComponent in evry projectile is bad optimization
+            var tmp = pointToSpawnBullet.transform.rotation;
+            pointToSpawnBullet.transform.LookAt(nowTarget);
+            pointToSpawnBullet.transform.rotation = Quaternion.Slerp(tmp, pointToSpawnBullet.transform.rotation, 0.5f); 
+            projectileFactory.doInst(pointToSpawnBullet.transform.position, pointToSpawnBullet.transform.rotation);
             Instantiate(shootEffect, pointToSpawnBullet.transform);
             timerBetweenShoot = timeBetweenShoot;
         }
         timerBetweenShoot = timerBetweenShoot - Time.deltaTime;
     }
-
     Transform getTarget(){
         var tmpCan = MissionController.instance.playersOnMission.FindAll(item => (Vector3.Angle((item.transform.position - transform.position), transform.forward) < seeAngle));
         tmpCan.Sort((it1, it2)=>Vector3.Distance(it1.transform.position, transform.position).CompareTo(Vector3.Distance(it2.transform.position, transform.position)));
@@ -115,6 +137,9 @@ public class EnBast : Enemy
                 Debug.DrawRay(from, dir,Color.blue,2);
                 if(Physics.Raycast(from, dir, out hit)){ 
                     if (hit.transform.GetComponent<Player>() != null){
+                        // bone.data.sourceObjects.Clear();
+                        // bone.data.sourceObjects.Add(nowPlayer.transform);
+                        // bone.data.sourceObjects.SetTransform(0, nowPlayer.transform);
                         return nowPlayer.transform;
                     }
                 }
@@ -122,6 +147,9 @@ public class EnBast : Enemy
         }
         return null;
     }
+
+
+
 
     public override void playInjure()
     {
@@ -141,30 +169,29 @@ public class EnBast : Enemy
             i.allEnemy.Add(gameObject);
         }}
     }
-
     public override void regSelfDel()
     {
         if(EnemyStateObserver.instances != null){
         foreach(var i in EnemyStateObserver.instances){
             i.allEnemy.Remove(gameObject);
         }}
+        projectileFactory.destroyFactory();
     }
-
 
 
     public override void initOnStart(){
         maxHp = maxHealth;
     }
-
     public override float calculateTheAmountOfDamage(damage damageIn)
     {
         return damageIn.damageSize;
     }
-
     public override void playEffectsOnDamage(damage damageIn){
         lastBittedBy = damageIn.owner;
+        if(getToTargetWhoHit){
+            nowTarget = damageIn.owner.transform;
+        }
     }
-
 
     public override float calculateTheAmountOfHeal(float healIn)
     {
