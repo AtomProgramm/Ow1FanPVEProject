@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,27 +6,31 @@ using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.Animations.Rigging;
 
-// solve/choose - 1 need amo counting and reload system?   2 how impl, when and where need get cover ?(class ShelterToMobs)   3 Is it necessary and what behavior will the state of the minigun turret have?
 [RequireComponent(typeof(ProjectileFactory))]
-public class EnBast : Enemy
+public class LowBot : Enemy
 {
     [Header("Choice target settings")]
-    public float canSeeRange = 200;
-    public float seeAngle = 360;
-    public bool canSeeThrowWalls;
-    public bool getToTargetWhoHit;
-    public bool momentumForgetTheTarget;
-    public bool haveTimeToForget;
-    public float timeToForget;
+    public float canSeeRange = 250;
+    public float seeAngle = 30;
+    public bool canSeeThrowWalls  = false;
+    public bool getToTargetWhoHit = true;
+    public bool momentumForgetTheTarget = false;
+    public bool haveTimeToForget = true;
+    public float timeToForget = 5;
 
 
     [Header("Shooting system")]
-    public float shootingRange;
+    public float shootingRange = 80f;
     public GameObject prefabOfBullet;
-    public ProjectileFactory projectileFactory;
     public GameObject pointToSpawnBullet;
+    public bool useAnimationEventNotTimer = true;
+    [DescriptionAttribute("timer between do shoot if 'useAnimationEventNotTimer' == false")]
     public float timeBetweenShoot = 0.5f;
-    private float timerBetweenShoot = -1;
+    public ProjectileFactory projectileFactory;
+    // [Range(0,1f)]
+    // public float weightToTurnSpineBone = 0.5f;
+    // [Range(0,1f)]
+    // public float weightToTurnGunHandBone = 0.5f;
     public Transform boneTarget ;
     
     
@@ -38,10 +43,11 @@ public class EnBast : Enemy
 
     private float timerToForgetting;
 
-    private Transform nowPlTarget = null;
+    private Transform nowTarget = null;
     private UnityEngine.AI.NavMeshAgent navAgent;
     private Collider thisCollider;
     private Animator nowAnimator;
+    private float timerBetweenShoot = -1;
 
 
 
@@ -57,8 +63,7 @@ public class EnBast : Enemy
         projectileFactory.bulletPrefab = prefabOfBullet;
         projectileFactory.owner = this;
 
-        
-        if(MissionController.instance != null) MissionController.instance.enemyOnMission.Add(this);
+        MissionController.instance.enemyOnMission.Add(this);
         timerToForgetting = timeToForget;
         regSelfSummon();
         initOnStart();
@@ -66,56 +71,54 @@ public class EnBast : Enemy
 
     void FixedUpdate()
     {
-        var tmpPlTarget = findPlayerTarget();
-        if((tmpPlTarget == null) && (nowPlTarget != null)){
+        var tmpTarget = getTarget();
+        if((tmpTarget == null) && (nowTarget != null)){
             if(momentumForgetTheTarget){
-                nowPlTarget = null;
+                nowTarget = null;
             }else if(haveTimeToForget){
                 if(timerToForgetting < 0){
                     timerToForgetting = timeToForget;
-                    nowPlTarget = null;
+                    nowTarget = null;
                 }else{
                     timerToForgetting = timerToForgetting - Time.fixedDeltaTime;
                 }
             }
 
         }else{
-            nowPlTarget = tmpPlTarget;
+            nowTarget = tmpTarget;
         }
     }
 
     void Update()
     {
-        if(nowPlTarget != null){
-            boneTarget.transform.position  = nowPlTarget.transform.position;
-            navAgent.SetDestination(nowPlTarget.transform.position);
-            nowAnimator.SetBool("walk", true);
+        if(nowTarget != null){
+            boneTarget.transform.position  = nowTarget.transform.position;
+            navAgent.SetDestination(nowTarget.transform.position);
+            nowAnimator.SetBool("move", true);
             navAgent.isStopped = false;
-            if(Vector3.Distance(transform.position, nowPlTarget.transform.position) < shootingRange){
-                navAgent.SetDestination(nowPlTarget.transform.position);
-                nowAnimator.SetBool("shooting", true);
-                processShooting();
+            if(Vector3.Distance(transform.position, nowTarget.transform.position) < shootingRange){
+                navAgent.SetDestination(nowTarget.transform.position);
+                nowAnimator.SetBool("Shooting", true);
+                if(! useAnimationEventNotTimer) processShooting();
             }else{
-                nowAnimator.SetBool("shooting", false);
+                nowAnimator.SetBool("Shooting", false);
             }
         }else{
-            nowAnimator.SetBool("walk", false);
-            nowAnimator.SetBool("shooting", false);
+            nowAnimator.SetBool("move", false);
+            nowAnimator.SetBool("Shooting", false);
             navAgent.isStopped = true;
         }
     }
-    void processShooting(){
-        if(timerBetweenShoot <= 0){
-            var tmp = pointToSpawnBullet.transform.rotation;
-            pointToSpawnBullet.transform.LookAt(nowPlTarget);
-            pointToSpawnBullet.transform.rotation = Quaternion.Slerp(tmp, pointToSpawnBullet.transform.rotation, 0.5f); 
+    void processShooting(){ // ! AnimEvent or EveryFrame -- call animation event and instant do shot     or    calling per frame to counting time and od shoot 
+        if(timerBetweenShoot <= 0 || useAnimationEventNotTimer){
+            pointToSpawnBullet.transform.LookAt(nowTarget);
             projectileFactory.doInst(pointToSpawnBullet.transform.position, pointToSpawnBullet.transform.rotation);
-            Instantiate(shootEffect, pointToSpawnBullet.transform);
+            if(shootEffect != null) Instantiate(shootEffect, pointToSpawnBullet.transform);
             timerBetweenShoot = timeBetweenShoot;
         }
         timerBetweenShoot = timerBetweenShoot - Time.deltaTime;
     }
-    Transform findPlayerTarget(){
+    Transform getTarget(){
         var tmpCan = MissionController.instance.playersOnMission.FindAll(item => (Vector3.Angle((item.transform.position - transform.position), transform.forward) < seeAngle));
         tmpCan.Sort((it1, it2)=>Vector3.Distance(it1.transform.position, transform.position).CompareTo(Vector3.Distance(it2.transform.position, transform.position)));
         foreach(var nowPlayer in tmpCan){
@@ -179,9 +182,10 @@ public class EnBast : Enemy
     public override void playEffectsOnDamage(damage damageIn){
         lastBittedBy = damageIn.owner;
         if(getToTargetWhoHit){
-            nowPlTarget = damageIn.owner.transform;
+            nowTarget = damageIn.owner.transform;
         }
     }
+
     public override float calculateTheAmountOfHeal(float healIn)
     {
         return healIn;

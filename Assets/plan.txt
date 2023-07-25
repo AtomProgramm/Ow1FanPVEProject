@@ -32,11 +32,7 @@
 -infinity waves mission + score/menu systems
 ~fix projectile
 contentFilling
-    ~fix and polishing enemy bastion
-    impl one shot nullSector bot
-    impl nullSector heave railGun bot
-    impl nullSector prowlingBloodhound bot
-    impl D.va 
+    ~fix and polishing enemy bastion (standard  most often they spawn in large numbers but second step after oneShotBots)
     impl Baptiste
     impl Mccree
     impl Zarya
@@ -44,6 +40,17 @@ contentFilling
     impl Moira
     impl Genji
     impl Reaper
+    ~impl one shot nullSector bot (safest nullSector bot low hp, low shoot speed, low ai but need to start and most often they spawn in large numbers)
+    impl nullSector healerBot bot (quickly defeated, interfere with gradually inflicts damage to the victorious)
+    impl ?nullSector melee assassin  (Attacks close and can cling to the player - needed to provoke help and team play) 
+    impl nullSector or-15(Orisa)  (big hp, standing behavior - need to stop players movement) 
+    impl nullSector kamikaze  (explode near players, need to reaction) 
+    impl nullSector Scout                         -??- 
+    impl nullSector railGunTank  (mini boss - big hp, list of attacks) 
+    impl nullSector boss  (????like mini boss but harder ...???) 
+    impl nullSector prowling"Bloodhound" bot      -??-
+    impl "nullSector" gwishins to dog fights      -??-
+    impl D.va 
 create story missions by comics and other
     build by comics new blood # 5/5 
     build mission from ov1 - Retribution 

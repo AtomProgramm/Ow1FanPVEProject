@@ -16,6 +16,10 @@ public class MissionController : MonoBehaviour
     public List<Enemy> enemyOnMission = new List<Enemy>(); //tmp?
 
 
+    void Awake()
+    {
+        instance = this; // kludge?
+    }
     void Start(){ 
         instance = this;
         for(int ind=0; ind < playersPrefabs.Count; ind = ind + 1){

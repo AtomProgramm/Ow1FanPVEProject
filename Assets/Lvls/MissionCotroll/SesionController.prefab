@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2108573691018607631}
   - component: {fileID: 4129969409496631298}
   - component: {fileID: 117429650}
+  - component: {fileID: 1538155134}
   m_Layer: 0
   m_Name: SesionController
   m_TagString: Untagged
@@ -71,10 +72,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playersStartPositions:
   - {fileID: 0}
-  - {fileID: 0}
   playersPrefabs:
   - {fileID: 8170697206945403369, guid: 269d449536971bd40870947d19df61ff, type: 3}
-  - {fileID: 2076977169614273817, guid: fb93a4e9ba845064f8d421cd2e6c13c1, type: 3}
   playersOnMission: []
   enemyOnMission: []
 --- !u!114 &117429650
@@ -93,3 +92,27 @@ MonoBehaviour:
   ultimate: 113
   ability1: 101
   ability2: 304
+--- !u!114 &1538155134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4129969409496631297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c340c72f235f5674fa8a9a480d47565e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalScorePoints: 0
+  lastMatchScore: 0
+  lastMatchTime: 0
+  lastMatchKills: 0
+  lastMatchDeath: 0
+  lastMatchHits: 0
+  lastMatchShoots: 0
+  lastMatchDamage: 0
+  lastMatchResultOfMatch: 0
+  lastMatchWaves: 0
+  lastMatchHeroOf: {fileID: 0}
+  lastMatchHeroesOfCommands: []
