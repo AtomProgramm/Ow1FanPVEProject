@@ -33,7 +33,7 @@
 ~fix projectile
 contentFilling
     ~fix and polishing enemy bastion (standard  most often they spawn in large numbers but second step after oneShotBots)
-    impl Baptiste
+    ~impl Baptiste
     impl Mccree
     impl Zarya
     impl Pharah
