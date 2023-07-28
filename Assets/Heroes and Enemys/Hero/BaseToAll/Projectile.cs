@@ -49,5 +49,6 @@ public class Projectile : MonoBehaviour
                 hitProcess(hittableObj);
             }
         }
+        doOnHit.Invoke(this);
     }
 }

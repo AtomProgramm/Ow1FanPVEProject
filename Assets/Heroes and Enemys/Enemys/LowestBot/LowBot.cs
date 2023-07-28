@@ -131,7 +131,6 @@ public class LowBot : Enemy
                 RaycastHit  hit;
                 Vector3 dir = nowPlayer.transform.position - transform.position;
                 Vector3 from = transform.position + (Vector3.up * 0.5f);
-                Debug.DrawRay(from, dir,Color.blue,2);
                 if(Physics.Raycast(from, dir, out hit)){ 
                     if (hit.transform.GetComponent<Player>() != null){
                         return nowPlayer.transform;
